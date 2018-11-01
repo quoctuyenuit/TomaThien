@@ -10,24 +10,25 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
-struct Student {
+public class Student {
     public var ref: DatabaseReference?
-    private var name: String
-    private var birthDay: Date
-    private var phoneNumber: String
-    private var email: String
-    private var school: String
-    private var address: String
-    private var yearOfAdmission: Int
-    private var yearsOfStudy: Float
-    private var team: Int
-    private var identify: String
+    var name: String
+    var birthDay: Date
+    var phoneNumber: String
+    var email: String
+    var school: String
+    var address: String
+    var yearOfAdmission: Int
+    var yearsOfStudy: Float
+    var team: Int
+    var identify: String
+    var image: String
     
     public var key: String {
         return self.identify.lowercased()
     }
     
-    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int) {
+    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, image: String) {
         self.name = name
         self.birthDay = birthDay
         self.phoneNumber = phoneNumber
@@ -38,9 +39,25 @@ struct Student {
         self.yearOfAdmission = yearOfAdmission
         self.yearsOfStudy = yearsOfStudy
         self.team = team
+        self.image = image
     }
     
-    init?(snapshot: DataSnapshot) {
+    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, image: UIImage) {
+        self.name = name
+        self.birthDay = birthDay
+        self.phoneNumber = phoneNumber
+        self.email = email
+        self.identify = identify
+        self.school = school
+        self.address = address
+        self.yearOfAdmission = yearOfAdmission
+        self.yearsOfStudy = yearsOfStudy
+        self.team = team
+        self.image = image.jpegData(compressionQuality: 0)?.base64EncodedString(options: .lineLength64Characters) ?? ""
+    }
+    
+    
+    convenience init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"] as? String,
@@ -52,7 +69,8 @@ struct Student {
             let address = value["address"] as? String,
             let yearOfAdmission = value["yearOfAdmission"] as? Int,
             let yearsOfStudy = value["yearsOfStudy"] as? Float,
-            let team = value["team"] as? Int
+            let team = value["team"] as? Int,
+            let image = value["image"] as? String
             else {
                 return nil
         }
@@ -61,7 +79,17 @@ struct Student {
         dateFormatted.dateFormat = "dd/MM/yyyy"
         guard let birthDay = dateFormatted.date(from: birthDayString) else { return nil }
         
-        self.init(name: name, birthDay: birthDay, phoneNumber: phoneNumber, email: email, identify: identify,school: school, address: address, yearOfAdmission: yearOfAdmission, yearsOfStudy: yearsOfStudy, team: team)
+        self.init(name: name,
+                  birthDay: birthDay,
+                  phoneNumber: phoneNumber,
+                  email: email,
+                  identify: identify,
+                  school: school,
+                  address: address,
+                  yearOfAdmission: yearOfAdmission,
+                  yearsOfStudy: yearsOfStudy,
+                  team: team,
+                  image: image)
         
         self.ref = snapshot.ref
     }
@@ -81,7 +109,7 @@ struct Student {
             "yearOfAdmission": self.yearOfAdmission,
             "yearsOfStudy": self.yearsOfStudy,
             "team": self.team,
-            "qrCode": ""
+            "image": self.image
         ]
     }
     

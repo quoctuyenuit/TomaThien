@@ -7,7 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3D437421895F520077E921 /* StudentDataCache.swift */; };
 		3D453E23218698B100396F4D /* QRScannerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D453E22218698B100396F4D /* QRScannerResult.swift */; };
+		3D5471C12189A53500A9CFF3 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C02189A53500A9CFF3 /* LoginProtocols.swift */; };
+		3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C22189A59000A9CFF3 /* LoginViewController.swift */; };
+		3D5471C52189A5AC00A9CFF3 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C42189A5AC00A9CFF3 /* LoginPresenter.swift */; };
+		3D5471C72189A5C300A9CFF3 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C62189A5C300A9CFF3 /* LoginInteractor.swift */; };
+		3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C82189A5D200A9CFF3 /* LoginRouter.swift */; };
+		3D5471CD2189CF4800A9CFF3 /* SqliteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */; };
+		3D5471DC2189D54B00A9CFF3 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */; };
+		3D5471DE2189D6D900A9CFF3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471DD2189D6D900A9CFF3 /* UIImage+Extension.swift */; };
+		3D5471E62189DC5D00A9CFF3 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */; };
+		3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */; };
+		3D5471EB2189EDF400A9CFF3 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471EA2189EDF400A9CFF3 /* TextField.swift */; };
+		3D5471ED2189F05500A9CFF3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471EC2189F05500A9CFF3 /* RegisterViewController.swift */; };
+		3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471EE2189F06000A9CFF3 /* RegisterProtocols.swift */; };
+		3D5471F12189F10A00A9CFF3 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F02189F10A00A9CFF3 /* RegisterPresenter.swift */; };
+		3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */; };
+		3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */; };
+		3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7321875DF2008C02CF /* FileHelper.swift */; };
+		3D903F7621876803008C02CF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7521876803008C02CF /* Extension.swift */; };
 		3D953F5D2185E26500976811 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F5C2185E26500976811 /* QRScannerViewController.swift */; };
 		3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F642185E61500976811 /* QRScannerProtocols.swift */; };
 		3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F662185E6DF00976811 /* QRScannerRouter.swift */; };
@@ -25,8 +44,10 @@
 		3DEB56042180C68400A00700 /* TomaThienTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB56032180C68400A00700 /* TomaThienTests.swift */; };
 		3DEB560F2180C68400A00700 /* TomaThienUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB560E2180C68400A00700 /* TomaThienUITests.swift */; };
 		3DEB561D2180C7C600A00700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DEB561C2180C7C600A00700 /* GoogleService-Info.plist */; };
-		3DEB56202180CD9F00A00700 /* FirebaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB561F2180CD9F00A00700 /* FirebaseDAO.swift */; };
+		3DEB56202180CD9F00A00700 /* ServerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB561F2180CD9F00A00700 /* ServerServices.swift */; };
 		3DEB56232180CFD500A00700 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB56222180CFD500A00700 /* Student.swift */; };
+		3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4AE2187F2D600A4E58E /* ToastView.swift */; };
+		3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */; };
 		461FBAC1C5001C4A627F5AF3 /* Pods_TomaThienUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3413263DB269E4A65D9041E /* Pods_TomaThienUITests.framework */; };
 		80640AA0D3CA6F18431BBCB1 /* Pods_TomaThienTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78263055AFA68C4BE81B188B /* Pods_TomaThienTests.framework */; };
 		FC6E360EEC398B253CBAC321 /* Pods_TomaThien.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EDFFA4BD600C1913F7C8AB /* Pods_TomaThien.framework */; };
@@ -51,7 +72,26 @@
 
 /* Begin PBXFileReference section */
 		167DB26FB47BA3B3E559AF8F /* Pods-TomaThienUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThienUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThienUITests/Pods-TomaThienUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3D3D437421895F520077E921 /* StudentDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataCache.swift; sourceTree = "<group>"; };
 		3D453E22218698B100396F4D /* QRScannerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerResult.swift; sourceTree = "<group>"; };
+		3D5471C02189A53500A9CFF3 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		3D5471C22189A59000A9CFF3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3D5471C42189A5AC00A9CFF3 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		3D5471C62189A5C300A9CFF3 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		3D5471C82189A5D200A9CFF3 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteDatabase.swift; sourceTree = "<group>"; };
+		3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
+		3D5471DD2189D6D900A9CFF3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
+		3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCache.swift; sourceTree = "<group>"; };
+		3D5471EA2189EDF400A9CFF3 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		3D5471EC2189F05500A9CFF3 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		3D5471EE2189F06000A9CFF3 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
+		3D5471F02189F10A00A9CFF3 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		3D903F7321875DF2008C02CF /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		3D903F7521876803008C02CF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3D953F5C2185E26500976811 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		3D953F642185E61500976811 /* QRScannerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerProtocols.swift; sourceTree = "<group>"; };
 		3D953F662185E6DF00976811 /* QRScannerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerRouter.swift; sourceTree = "<group>"; };
@@ -75,8 +115,10 @@
 		3DEB560E2180C68400A00700 /* TomaThienUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomaThienUITests.swift; sourceTree = "<group>"; };
 		3DEB56102180C68400A00700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DEB561C2180C7C600A00700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3DEB561F2180CD9F00A00700 /* FirebaseDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDAO.swift; sourceTree = "<group>"; };
+		3DEB561F2180CD9F00A00700 /* ServerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerServices.swift; sourceTree = "<group>"; };
 		3DEB56222180CFD500A00700 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		3DF1E4AE2187F2D600A4E58E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListProtocols.swift; sourceTree = "<group>"; };
 		4081062385FB05E02D3ABB99 /* Pods-TomaThienTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThienTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThienTests/Pods-TomaThienTests.release.xcconfig"; sourceTree = "<group>"; };
 		6486FD7F965CEE5605AF9213 /* Pods-TomaThien.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThien.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThien/Pods-TomaThien.release.xcconfig"; sourceTree = "<group>"; };
 		78263055AFA68C4BE81B188B /* Pods_TomaThienTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TomaThienTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,12 +167,180 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3D3D437321895F380077E921 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471E42189DC5600A9CFF3 /* Entity */,
+				3D3D437421895F520077E921 /* StudentDataCache.swift */,
+				3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */,
+				3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
 		3D453E212186989F00396F4D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				3D453E22218698B100396F4D /* QRScannerResult.swift */,
+				3D903F7321875DF2008C02CF /* FileHelper.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		3D5471B82189A4FC00A9CFF3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471BE2189A51E00A9CFF3 /* Protocol */,
+				3D5471BD2189A51800A9CFF3 /* Entity */,
+				3D5471BC2189A51400A9CFF3 /* Router */,
+				3D5471BB2189A50F00A9CFF3 /* Interactor */,
+				3D5471BA2189A50A00A9CFF3 /* Presenter */,
+				3D5471B92189A50700A9CFF3 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3D5471B92189A50700A9CFF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471C22189A59000A9CFF3 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D5471BA2189A50A00A9CFF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471C42189A5AC00A9CFF3 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D5471BB2189A50F00A9CFF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471C62189A5C300A9CFF3 /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3D5471BC2189A51400A9CFF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471C82189A5D200A9CFF3 /* LoginRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3D5471BD2189A51800A9CFF3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3D5471BE2189A51E00A9CFF3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471C02189A53500A9CFF3 /* LoginProtocols.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3D5471D12189D4A500A9CFF3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1E4B52188071900A4E58E /* ShowList */,
+				3D953F5E2185E5B900976811 /* QRScanner */,
+				3D5471D32189D4ED00A9CFF3 /* Register */,
+				3D5471B82189A4FC00A9CFF3 /* Login */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		3D5471D22189D4C500A9CFF3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3D3D437321895F380077E921 /* LocalStorage */,
+				3DF1E4B02187FBFF00A4E58E /* ServerServices */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3D5471D32189D4ED00A9CFF3 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471D92189D50E00A9CFF3 /* Protocol */,
+				3D5471D82189D50300A9CFF3 /* Entity */,
+				3D5471D72189D4FF00A9CFF3 /* Router */,
+				3D5471D62189D4FA00A9CFF3 /* Interactor */,
+				3D5471D52189D4F600A9CFF3 /* Presenter */,
+				3D5471D42189D4F200A9CFF3 /* View */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		3D5471D42189D4F200A9CFF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471EC2189F05500A9CFF3 /* RegisterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D5471D52189D4F600A9CFF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471F02189F10A00A9CFF3 /* RegisterPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D5471D62189D4FA00A9CFF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3D5471D72189D4FF00A9CFF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3D5471D82189D50300A9CFF3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3D5471D92189D50E00A9CFF3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471EE2189F06000A9CFF3 /* RegisterProtocols.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3D5471E42189DC5600A9CFF3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3D5471E92189EDDD00A9CFF3 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				3D5471EA2189EDF400A9CFF3 /* TextField.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		3D953F5E2185E5B900976811 /* QRScanner */ = {
@@ -192,6 +402,7 @@
 			children = (
 				3D953FC62186063D00976811 /* UIColor+Extension.swift */,
 				3D953FCE2186145E00976811 /* UIFont+Extension.swift */,
+				3D5471DD2189D6D900A9CFF3 /* UIImage+Extension.swift */,
 			);
 			path = SystemExtension;
 			sourceTree = "<group>";
@@ -199,7 +410,11 @@
 		3D953FC821860F8800976811 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3D5471E92189EDDD00A9CFF3 /* Component */,
+				3D953FC52186062100976811 /* SystemExtension */,
 				3D953FC921860F9600976811 /* AppUtility.swift */,
+				3D903F7521876803008C02CF /* Extension.swift */,
+				3DF1E4AE2187F2D600A4E58E /* ToastView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -237,11 +452,10 @@
 		3DEB55ED2180C68300A00700 /* TomaThien */ = {
 			isa = PBXGroup;
 			children = (
-				3D953FC821860F8800976811 /* Common */,
-				3D953FC52186062100976811 /* SystemExtension */,
-				3D953F5E2185E5B900976811 /* QRScanner */,
+				3D5471D22189D4C500A9CFF3 /* Services */,
+				3D5471D12189D4A500A9CFF3 /* Features */,
 				3DEB56212180CFC700A00700 /* Entity */,
-				3DEB561E2180CD6F00A00700 /* Interactor */,
+				3D953FC821860F8800976811 /* Common */,
 				3DEB561C2180C7C600A00700 /* GoogleService-Info.plist */,
 				3DEB55EE2180C68300A00700 /* AppDelegate.swift */,
 				3DEB55F02180C68300A00700 /* ViewController.swift */,
@@ -249,6 +463,7 @@
 				3DEB55F52180C68400A00700 /* Assets.xcassets */,
 				3DEB55F72180C68400A00700 /* LaunchScreen.storyboard */,
 				3DEB55FA2180C68400A00700 /* Info.plist */,
+				3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */,
 			);
 			path = TomaThien;
 			sourceTree = "<group>";
@@ -271,20 +486,92 @@
 			path = TomaThienUITests;
 			sourceTree = "<group>";
 		};
-		3DEB561E2180CD6F00A00700 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				3DEB561F2180CD9F00A00700 /* FirebaseDAO.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
 		3DEB56212180CFC700A00700 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				3DEB56222180CFD500A00700 /* Student.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		3DF1E4B02187FBFF00A4E58E /* ServerServices */ = {
+			isa = PBXGroup;
+			children = (
+				3DEB561F2180CD9F00A00700 /* ServerServices.swift */,
+			);
+			path = ServerServices;
+			sourceTree = "<group>";
+		};
+		3DF1E4B52188071900A4E58E /* ShowList */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1E4BE21880A5500A4E58E /* SubFeatures */,
+				3DF1E4BB2188090C00A4E58E /* Protocols */,
+				3DF1E4BA2188090000A4E58E /* Entity */,
+				3DF1E4B9218808FB00A4E58E /* Router */,
+				3DF1E4B8218808F400A4E58E /* Interactor */,
+				3DF1E4B7218808EF00A4E58E /* Presenter */,
+				3DF1E4B6218808E900A4E58E /* View */,
+			);
+			path = ShowList;
+			sourceTree = "<group>";
+		};
+		3DF1E4B6218808E900A4E58E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3DF1E4B7218808EF00A4E58E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3DF1E4B8218808F400A4E58E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3DF1E4B9218808FB00A4E58E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3DF1E4BA2188090000A4E58E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3DF1E4BB2188090C00A4E58E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3DF1E4BE21880A5500A4E58E /* SubFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1E4BF21880A7000A4E58E /* ShowSubList */,
+			);
+			path = SubFeatures;
+			sourceTree = "<group>";
+		};
+		3DF1E4BF21880A7000A4E58E /* ShowSubList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShowSubList;
 			sourceTree = "<group>";
 		};
 		C113CC0261553B3CDE3B1E8F /* Pods */ = {
@@ -507,10 +794,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TomaThien/Pods-TomaThien-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -519,10 +809,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -539,20 +832,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5471DC2189D54B00A9CFF3 /* UserData.xcdatamodeld in Sources */,
+				3D5471CD2189CF4800A9CFF3 /* SqliteDatabase.swift in Sources */,
+				3D5471C52189A5AC00A9CFF3 /* LoginPresenter.swift in Sources */,
+				3D5471EB2189EDF400A9CFF3 /* TextField.swift in Sources */,
 				3D453E23218698B100396F4D /* QRScannerResult.swift in Sources */,
+				3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */,
+				3D5471C72189A5C300A9CFF3 /* LoginInteractor.swift in Sources */,
 				3DEB55F12180C68300A00700 /* ViewController.swift in Sources */,
+				3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */,
 				3DEB55EF2180C68300A00700 /* AppDelegate.swift in Sources */,
+				3D5471E62189DC5D00A9CFF3 /* LocalUser.swift in Sources */,
 				3D953F5D2185E26500976811 /* QRScannerViewController.swift in Sources */,
 				3D953FCA21860F9600976811 /* AppUtility.swift in Sources */,
 				3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */,
 				3D953F692185E73700976811 /* QRScannerInteractor.swift in Sources */,
-				3DEB56202180CD9F00A00700 /* FirebaseDAO.swift in Sources */,
+				3DEB56202180CD9F00A00700 /* ServerServices.swift in Sources */,
 				3DEB56232180CFD500A00700 /* Student.swift in Sources */,
+				3D903F7621876803008C02CF /* Extension.swift in Sources */,
 				3D953FCD218612CC00976811 /* QRScannerResultPopupView.swift in Sources */,
+				3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */,
+				3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */,
 				3D953F6B2185E74E00976811 /* QRScannerPresenter.swift in Sources */,
+				3D5471ED2189F05500A9CFF3 /* RegisterViewController.swift in Sources */,
 				3D953FCF2186145E00976811 /* UIFont+Extension.swift in Sources */,
 				3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */,
+				3D5471DE2189D6D900A9CFF3 /* UIImage+Extension.swift in Sources */,
+				3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */,
+				3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */,
+				3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */,
 				3D953FC72186063D00976811 /* UIColor+Extension.swift in Sources */,
+				3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */,
+				3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */,
+				3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */,
+				3D5471F12189F10A00A9CFF3 /* RegisterPresenter.swift in Sources */,
+				3D5471C12189A53500A9CFF3 /* LoginProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,6 +1199,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */,
+			);
+			currentVersion = 3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */;
+			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3DEB55E32180C68300A00700 /* Project object */;
 }

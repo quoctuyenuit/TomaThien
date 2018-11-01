@@ -14,7 +14,9 @@ target 'TomaThien' do
   pod 'Firebase/Auth', :inhibit_warnings => true
   pod 'Firebase/Storage'
   pod 'AlamofireImage', '~> 3.4'
-  
+  pod 'SQLite.swift', '~> 0.11.5'
+
+
   target 'TomaThienTests' do
     inherit! :search_paths
     # Pods for testing
