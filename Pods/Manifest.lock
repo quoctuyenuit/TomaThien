@@ -82,6 +82,7 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
+  - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.4)
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - RxSwift (~> 4.0)
   - SnapKit (~> 4.0)
   - SQLite.swift (~> 0.11.5)
+  - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -115,6 +117,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SQLite.swift
+    - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -136,7 +139,8 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: 99627fcb55e3e89c3f4b15dba8094887f47e7241
+PODFILE CHECKSUM: 4c8c298a9b72f6515cf768ff2edafe67cbadbd4d
 
 COCOAPODS: 1.5.3

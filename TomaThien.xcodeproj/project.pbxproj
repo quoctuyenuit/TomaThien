@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D272EBA218D475E001C6BFA /* HomeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272EB9218D475E001C6BFA /* HomeCellModel.swift */; };
+		3D272EBD218D4B71001C6BFA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272EBC218D4B71001C6BFA /* MainViewController.swift */; };
+		3D272EC5218D4EFB001C6BFA /* DelegateBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272EC4218D4EFB001C6BFA /* DelegateBaseProtocol.swift */; };
+		3D272EC7218D4FBC001C6BFA /* DelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272EC6218D4FBC001C6BFA /* DelegateDispatcher.swift */; };
+		3D272EC9218D5022001C6BFA /* UIAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272EC8218D5022001C6BFA /* UIAppDelegate.swift */; };
+		3D272ECB218D5121001C6BFA /* UIAppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272ECA218D5121001C6BFA /* UIAppDelegate+Extension.swift */; };
+		3D272ED0218D5632001C6BFA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272ECF218D5632001C6BFA /* TabBarViewController.swift */; };
+		3D272ED3218D5D94001C6BFA /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D272ED2218D5D94001C6BFA /* LoginManager.swift */; };
+		3D3870AB218D2FBD007B7BC3 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870AA218D2FBD007B7BC3 /* HomeProtocols.swift */; };
+		3D3870AD218D303F007B7BC3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870AC218D303F007B7BC3 /* HomeViewController.swift */; };
+		3D3870AF218D3059007B7BC3 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870AE218D3059007B7BC3 /* HomePresenter.swift */; };
+		3D3870B1218D3072007B7BC3 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870B0218D3072007B7BC3 /* HomeInteractor.swift */; };
+		3D3870B3218D307E007B7BC3 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870B2218D307E007B7BC3 /* HomeRouter.swift */; };
+		3D3870B5218D37D5007B7BC3 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3870B4218D37D5007B7BC3 /* HomeViewCell.swift */; };
 		3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3D437421895F520077E921 /* StudentDataCache.swift */; };
 		3D453E23218698B100396F4D /* QRScannerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D453E22218698B100396F4D /* QRScannerResult.swift */; };
 		3D5471C12189A53500A9CFF3 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C02189A53500A9CFF3 /* LoginProtocols.swift */; };
@@ -25,9 +39,10 @@
 		3D5471F12189F10A00A9CFF3 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F02189F10A00A9CFF3 /* RegisterPresenter.swift */; };
 		3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */; };
 		3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */; };
+		3D54E861218DFB0900607EE5 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D54E860218DFB0900607EE5 /* QRScannerViewController.swift */; };
 		3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7321875DF2008C02CF /* FileHelper.swift */; };
 		3D903F7621876803008C02CF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7521876803008C02CF /* Extension.swift */; };
-		3D953F5D2185E26500976811 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F5C2185E26500976811 /* QRScannerViewController.swift */; };
+		3D953F5D2185E26500976811 /* QRScannerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F5C2185E26500976811 /* QRScannerCamera.swift */; };
 		3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F642185E61500976811 /* QRScannerProtocols.swift */; };
 		3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F662185E6DF00976811 /* QRScannerRouter.swift */; };
 		3D953F692185E73700976811 /* QRScannerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F682185E73700976811 /* QRScannerInteractor.swift */; };
@@ -72,6 +87,20 @@
 
 /* Begin PBXFileReference section */
 		167DB26FB47BA3B3E559AF8F /* Pods-TomaThienUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThienUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThienUITests/Pods-TomaThienUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3D272EB9218D475E001C6BFA /* HomeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellModel.swift; sourceTree = "<group>"; };
+		3D272EBC218D4B71001C6BFA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3D272EC4218D4EFB001C6BFA /* DelegateBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateBaseProtocol.swift; sourceTree = "<group>"; };
+		3D272EC6218D4FBC001C6BFA /* DelegateDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateDispatcher.swift; sourceTree = "<group>"; };
+		3D272EC8218D5022001C6BFA /* UIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppDelegate.swift; sourceTree = "<group>"; };
+		3D272ECA218D5121001C6BFA /* UIAppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		3D272ECF218D5632001C6BFA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3D272ED2218D5D94001C6BFA /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		3D3870AA218D2FBD007B7BC3 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		3D3870AC218D303F007B7BC3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3D3870AE218D3059007B7BC3 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		3D3870B0218D3072007B7BC3 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		3D3870B2218D307E007B7BC3 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		3D3870B4218D37D5007B7BC3 /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		3D3D437421895F520077E921 /* StudentDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataCache.swift; sourceTree = "<group>"; };
 		3D453E22218698B100396F4D /* QRScannerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerResult.swift; sourceTree = "<group>"; };
 		3D5471C02189A53500A9CFF3 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
@@ -90,9 +119,10 @@
 		3D5471F02189F10A00A9CFF3 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		3D54E860218DFB0900607EE5 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		3D903F7321875DF2008C02CF /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		3D903F7521876803008C02CF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		3D953F5C2185E26500976811 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		3D953F5C2185E26500976811 /* QRScannerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerCamera.swift; sourceTree = "<group>"; };
 		3D953F642185E61500976811 /* QRScannerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerProtocols.swift; sourceTree = "<group>"; };
 		3D953F662185E6DF00976811 /* QRScannerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerRouter.swift; sourceTree = "<group>"; };
 		3D953F682185E73700976811 /* QRScannerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerInteractor.swift; sourceTree = "<group>"; };
@@ -165,6 +195,112 @@
 				B3413263DB269E4A65D9041E /* Pods_TomaThienUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D272EB8218D470E001C6BFA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3D272EB9218D475E001C6BFA /* HomeCellModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3D272EBB218D4B58001C6BFA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3D272EBE218D4B78001C6BFA /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3D272EBE218D4B78001C6BFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D272EBC218D4B71001C6BFA /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D272EC3218D4ED0001C6BFA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3DEB55EE2180C68300A00700 /* AppDelegate.swift */,
+				3D272EC4218D4EFB001C6BFA /* DelegateBaseProtocol.swift */,
+				3D272EC6218D4FBC001C6BFA /* DelegateDispatcher.swift */,
+				3D272EC8218D5022001C6BFA /* UIAppDelegate.swift */,
+				3D272ECA218D5121001C6BFA /* UIAppDelegate+Extension.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		3D272ECC218D5573001C6BFA /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D272ECF218D5632001C6BFA /* TabBarViewController.swift */,
+			);
+			path = TabBarViewController;
+			sourceTree = "<group>";
+		};
+		3D272ED1218D5D84001C6BFA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3D272ED2218D5D94001C6BFA /* LoginManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		3D3870A4218D2F90007B7BC3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870A9218D2FAB007B7BC3 /* Protocol */,
+				3D272EB8218D470E001C6BFA /* Entity */,
+				3D3870A8218D2FA7007B7BC3 /* Router */,
+				3D3870A7218D2FA2007B7BC3 /* Interactor */,
+				3D3870A6218D2F9D007B7BC3 /* Presenter */,
+				3D3870A5218D2F97007B7BC3 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3D3870A5218D2F97007B7BC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870AC218D303F007B7BC3 /* HomeViewController.swift */,
+				3D6DF529218DA5F500F41CFF /* SubViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D3870A6218D2F9D007B7BC3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870AE218D3059007B7BC3 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D3870A7218D2FA2007B7BC3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870B0218D3072007B7BC3 /* HomeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3D3870A8218D2FA7007B7BC3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870B2218D307E007B7BC3 /* HomeRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3D3870A9218D2FAB007B7BC3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870AA218D2FBD007B7BC3 /* HomeProtocols.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3D3D437321895F380077E921 /* LocalStorage */ = {
@@ -247,15 +383,18 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		3D5471D12189D4A500A9CFF3 /* Features */ = {
+		3D5471D12189D4A500A9CFF3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3D272ECC218D5573001C6BFA /* TabBarViewController */,
+				3D272EBB218D4B58001C6BFA /* Main */,
+				3D3870A4218D2F90007B7BC3 /* Home */,
 				3DF1E4B52188071900A4E58E /* ShowList */,
 				3D953F5E2185E5B900976811 /* QRScanner */,
 				3D5471D32189D4ED00A9CFF3 /* Register */,
 				3D5471B82189A4FC00A9CFF3 /* Login */,
 			);
-			path = Features;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		3D5471D22189D4C500A9CFF3 /* Services */ = {
@@ -343,6 +482,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		3D6DF529218DA5F500F41CFF /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D3870B4218D37D5007B7BC3 /* HomeViewCell.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		3D953F5E2185E5B900976811 /* QRScanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +506,7 @@
 		3D953F5F2185E5C800976811 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3D953F5C2185E26500976811 /* QRScannerViewController.swift */,
+				3D54E860218DFB0900607EE5 /* QRScannerViewController.swift */,
 				3D953FCB2186129F00976811 /* SubViews */,
 			);
 			path = View;
@@ -422,6 +569,7 @@
 		3D953FCB2186129F00976811 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				3D953F5C2185E26500976811 /* QRScannerCamera.swift */,
 				3D953FCC218612CC00976811 /* QRScannerResultPopupView.swift */,
 			);
 			path = SubViews;
@@ -452,12 +600,13 @@
 		3DEB55ED2180C68300A00700 /* TomaThien */ = {
 			isa = PBXGroup;
 			children = (
+				3D272ED1218D5D84001C6BFA /* Manager */,
+				3D272EC3218D4ED0001C6BFA /* AppDelegate */,
 				3D5471D22189D4C500A9CFF3 /* Services */,
-				3D5471D12189D4A500A9CFF3 /* Features */,
+				3D5471D12189D4A500A9CFF3 /* ViewController */,
 				3DEB56212180CFC700A00700 /* Entity */,
 				3D953FC821860F8800976811 /* Common */,
 				3DEB561C2180C7C600A00700 /* GoogleService-Info.plist */,
-				3DEB55EE2180C68300A00700 /* AppDelegate.swift */,
 				3DEB55F02180C68300A00700 /* ViewController.swift */,
 				3DEB55F22180C68300A00700 /* Main.storyboard */,
 				3DEB55F52180C68400A00700 /* Assets.xcassets */,
@@ -802,6 +951,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -817,6 +967,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewLeftAlignedLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -834,21 +985,27 @@
 			files = (
 				3D5471DC2189D54B00A9CFF3 /* UserData.xcdatamodeld in Sources */,
 				3D5471CD2189CF4800A9CFF3 /* SqliteDatabase.swift in Sources */,
+				3D3870B5218D37D5007B7BC3 /* HomeViewCell.swift in Sources */,
 				3D5471C52189A5AC00A9CFF3 /* LoginPresenter.swift in Sources */,
+				3D3870AD218D303F007B7BC3 /* HomeViewController.swift in Sources */,
 				3D5471EB2189EDF400A9CFF3 /* TextField.swift in Sources */,
+				3D3870AB218D2FBD007B7BC3 /* HomeProtocols.swift in Sources */,
 				3D453E23218698B100396F4D /* QRScannerResult.swift in Sources */,
 				3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */,
 				3D5471C72189A5C300A9CFF3 /* LoginInteractor.swift in Sources */,
 				3DEB55F12180C68300A00700 /* ViewController.swift in Sources */,
+				3D272EBD218D4B71001C6BFA /* MainViewController.swift in Sources */,
 				3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */,
 				3DEB55EF2180C68300A00700 /* AppDelegate.swift in Sources */,
 				3D5471E62189DC5D00A9CFF3 /* LocalUser.swift in Sources */,
-				3D953F5D2185E26500976811 /* QRScannerViewController.swift in Sources */,
+				3D953F5D2185E26500976811 /* QRScannerCamera.swift in Sources */,
+				3D272ED0218D5632001C6BFA /* TabBarViewController.swift in Sources */,
 				3D953FCA21860F9600976811 /* AppUtility.swift in Sources */,
 				3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */,
 				3D953F692185E73700976811 /* QRScannerInteractor.swift in Sources */,
 				3DEB56202180CD9F00A00700 /* ServerServices.swift in Sources */,
 				3DEB56232180CFD500A00700 /* Student.swift in Sources */,
+				3D272EC5218D4EFB001C6BFA /* DelegateBaseProtocol.swift in Sources */,
 				3D903F7621876803008C02CF /* Extension.swift in Sources */,
 				3D953FCD218612CC00976811 /* QRScannerResultPopupView.swift in Sources */,
 				3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */,
@@ -856,13 +1013,22 @@
 				3D953F6B2185E74E00976811 /* QRScannerPresenter.swift in Sources */,
 				3D5471ED2189F05500A9CFF3 /* RegisterViewController.swift in Sources */,
 				3D953FCF2186145E00976811 /* UIFont+Extension.swift in Sources */,
+				3D54E861218DFB0900607EE5 /* QRScannerViewController.swift in Sources */,
 				3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */,
 				3D5471DE2189D6D900A9CFF3 /* UIImage+Extension.swift in Sources */,
 				3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */,
+				3D3870B3218D307E007B7BC3 /* HomeRouter.swift in Sources */,
 				3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */,
+				3D272EC9218D5022001C6BFA /* UIAppDelegate.swift in Sources */,
 				3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */,
+				3D272ECB218D5121001C6BFA /* UIAppDelegate+Extension.swift in Sources */,
 				3D953FC72186063D00976811 /* UIColor+Extension.swift in Sources */,
 				3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */,
+				3D3870B1218D3072007B7BC3 /* HomeInteractor.swift in Sources */,
+				3D3870AF218D3059007B7BC3 /* HomePresenter.swift in Sources */,
+				3D272EC7218D4FBC001C6BFA /* DelegateDispatcher.swift in Sources */,
+				3D272EBA218D475E001C6BFA /* HomeCellModel.swift in Sources */,
+				3D272ED3218D5D94001C6BFA /* LoginManager.swift in Sources */,
 				3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */,
 				3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */,
 				3D5471F12189F10A00A9CFF3 /* RegisterPresenter.swift in Sources */,

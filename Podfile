@@ -15,7 +15,7 @@ target 'TomaThien' do
   pod 'Firebase/Storage'
   pod 'AlamofireImage', '~> 3.4'
   pod 'SQLite.swift', '~> 0.11.5'
-
+  pod 'UICollectionViewLeftAlignedLayout'
 
   target 'TomaThienTests' do
     inherit! :search_paths
