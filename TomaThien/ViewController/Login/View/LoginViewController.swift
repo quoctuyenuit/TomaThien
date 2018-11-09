@@ -155,7 +155,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         self.mainBound.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(30)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
         }
         self.boundRegister.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -251,22 +251,24 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     @objc private func loginTapped(_ sender: UIButton) {
         
-        let user = LocalUser(name: "",
+        let user = LocalUser(name: "Nguyễn Quốc Tuyến",
                              birthDay: Date(),
                              phoneNumber: "",
                              email: "",
-                             identify: "",
+                             identify: "184313135",
                              school: "",
                              address: "",
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4,
                              team: 8,
-                             image: "",
-                             userType: .member,
+                             image: "https://firebasestorage.googleapis.com/v0/b/tomathien-a3309.appspot.com/o/tuyenktpm2015.jpg?alt=media&token=0de3d70c-f5a1-49a2-9adf-f554cbcd1535",
+                             userType: .admin,
                              status: .authentic)
         LoginManager.sharedInstance.user = user
         UIAppDelegate.shareInstance.showMainViewController(user: user)
-        
+//        let testView = UIViewController()
+//        testView.view.backgroundColor = .green
+//        self.navigationController?.pushViewController(testView, animated: true)
     }
 
     @objc private func forgotPasswordTapped(_ sender: UIButton) {

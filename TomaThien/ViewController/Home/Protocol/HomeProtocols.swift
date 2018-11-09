@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol HomeViewProtocol {
+    
     var presenter: HomePresenterProtocol? { get set }
 }
 protocol HomePresenterProtocol {
@@ -25,6 +26,7 @@ protocol HomeInteractorProtocol {
     
 }
 protocol HomeRouterProtocol {
+    static func mainStoryboard() -> UIStoryboard
     static func createHomeViewController() -> UIViewController
     func showQRScanner()
 }

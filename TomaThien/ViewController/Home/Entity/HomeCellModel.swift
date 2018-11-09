@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 enum HomeCellIdentify {
-    case qrCode
+    case qrCodeScanner
+    case qrCodeView
     case showList
     case report
     case sendServer

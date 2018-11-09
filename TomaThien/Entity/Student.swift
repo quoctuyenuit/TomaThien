@@ -22,7 +22,7 @@ public class Student {
     var yearsOfStudy: Float
     var team: Int
     var identify: String
-    var image: String
+    var image: String //Link download
     
     public var key: String {
         return self.identify.lowercased()
@@ -41,21 +41,6 @@ public class Student {
         self.team = team
         self.image = image
     }
-    
-    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, image: UIImage) {
-        self.name = name
-        self.birthDay = birthDay
-        self.phoneNumber = phoneNumber
-        self.email = email
-        self.identify = identify
-        self.school = school
-        self.address = address
-        self.yearOfAdmission = yearOfAdmission
-        self.yearsOfStudy = yearsOfStudy
-        self.team = team
-        self.image = image.jpegData(compressionQuality: 0)?.base64EncodedString(options: .lineLength64Characters) ?? ""
-    }
-    
     
     convenience init?(snapshot: DataSnapshot) {
         guard
@@ -111,19 +96,5 @@ public class Student {
             "team": self.team,
             "image": self.image
         ]
-    }
-    
-    func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
-        let storageRef = Storage.storage().reference().child("\(self.key).png")
-        if let uploadData = UIImage(named: "qrcode")!.pngData() {
-            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                if let error = error {
-                    print(error)
-                    completion(nil)
-                } else {
-                    completion(metadata?.path)
-                }
-            }
-        }
     }
 }

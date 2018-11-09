@@ -162,8 +162,14 @@ class QRScannerCamera: UIViewController {
     
     deinit {
         self.clearTimer()
-        guard self.results.count > 0 else { return }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard self.results.count > 0 else { return }
+        QRScannerStore.sharedInstance.writeCache(dic: self.results)
+        self.sendServer(from: self.results)
+    }
+    
     //MARK: - Function
     private func clearTimer() {
         timer?.invalidate()
@@ -220,6 +226,7 @@ extension QRScannerCamera: AVCaptureMetadataOutputObjectsDelegate {
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
             if let data = metadataObj.stringValue {
                 self.stopScanning()
+                print(data)
                 let popup = QRScannerResultPopupView(json: data)
                 popup.delegate = self
                 popup.modalPresentationStyle = .overFullScreen
@@ -239,3 +246,15 @@ extension QRScannerCamera: QRScannerResultPopupViewDelegate {
     }
 }
 
+extension QRScannerCamera {
+    func sendServer(from dictionary: [String: Any]) {
+        let date = Date()
+        let formatted = DateFormatter()
+        formatted.dateStyle = .short
+        formatted.dateFormat = "yyyyMMdd"
+        
+        dictionary.forEach { (key, value) in
+            ServerServices.sharedInstance.pushData(path: "RegistionList/\(formatted.string(from: date))/\(key)", value: value)
+        }
+    }
+}

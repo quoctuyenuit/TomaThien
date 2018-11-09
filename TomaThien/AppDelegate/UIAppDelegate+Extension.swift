@@ -9,60 +9,12 @@
 import Foundation
 import UIKit
 
-fileprivate enum BarType {
-    case home
-    case profile
-    var name: String {
-        switch self {
-        case .home:
-            return "Trang chủ"
-        case .profile:
-            return "Cá nhân"
-        }
-    }
-    var iconName: String {
-        switch self {
-        case .home:
-            return "ico_bar_home"
-        case .profile:
-            return "ico_bar_profile"
-        }
-    }
-}
 
 extension UIAppDelegate {
     public func showMainViewController(user: LocalUser) {
-        let tabBarViewController = TabBarViewController(subViews: self.configure(user: user))
-        self.window?.rootViewController = tabBarViewController
-    }
-    
-    fileprivate func createBarItem(with type: BarType) -> UITabBarItem {
-        let image = UIImage(named: type.iconName)
-        let item = UITabBarItem(title: type.name, image: image, selectedImage: image?.withRenderingMode(.alwaysOriginal))
-        
-        item.badgeValue = nil
-        item.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -2.0)
-        
-        item.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
-        item.setTitleTextAttributes([.foregroundColor: UIColor.appBase], for: .selected)
-        return item;
-    }
-    
-    fileprivate func createNavi(vc: UIViewController) -> UINavigationController {
-        let navi = UINavigationController.init(navigationBarClass: CustomNavigationBar.self, toolbarClass: nil)
-        navi.viewControllers = [vc]
-        navi.defaultNavigationBarStyle()
-        return navi
-    }
-    
-    func configure(user: LocalUser) -> [UIViewController] {
-        let home = self.createNavi(vc: HomeRouter.createHomeViewController())
-        home.tabBarItem = self.createBarItem(with: .home)
-        
-        let profile = self.createNavi(vc: UIViewController())
-        profile.tabBarItem = self.createBarItem(with: .profile)
-        
-        return [home, profile]
+        let tabviewController = TabBarViewController()
+        let navigationController = UINavigationController(rootViewController: tabviewController)
+        self.window?.rootViewController = navigationController
     }
 }
 

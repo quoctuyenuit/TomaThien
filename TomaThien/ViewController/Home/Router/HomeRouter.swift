@@ -12,6 +12,10 @@ import UIKit
 class HomeRouter: HomeRouterProtocol {
     private static var vc: UIViewController?
     
+    class func mainStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: Bundle.main)
+    }
+    
     class func createHomeViewController() -> UIViewController {
         let view = HomeViewController()
         let presenter = HomePresenter()
@@ -23,7 +27,6 @@ class HomeRouter: HomeRouterProtocol {
         presenter.interactor = interactor
         presenter.router = router
         
-        vc = view
         return view
     }
     

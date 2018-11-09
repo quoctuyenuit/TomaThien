@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PINRemoteImage
 import UIKit
 
 protocol QRScannerResultPopupViewDelegate {
@@ -36,7 +37,7 @@ class QRScannerResultPopupView: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
+        imageView.pin_setImage(from: URL(string: self.scannerResult?.imageUrl ?? ""))
         return imageView
     }()
     
@@ -71,6 +72,14 @@ class QRScannerResultPopupView: UIViewController {
         return title
     }()
     
+    private lazy var teamTitle: UILabel = {
+        let title = UILabel()
+        title.text = "Nhóm:"
+        title.font = UIFont.sfuiMedium()
+        title.textAlignment = .right
+        return title
+    }()
+    
     private lazy var nameLabel: UILabel = {
         let title = UILabel()
         title.text = self.scannerResult?.name ?? "Unknown"
@@ -82,6 +91,15 @@ class QRScannerResultPopupView: UIViewController {
     private lazy var identifyLabel: UILabel = {
         let title = UILabel()
         title.text = self.scannerResult?.identify ?? "Unknown"
+        title.font = UIFont.sfuiMedium()
+        title.textAlignment = .left
+        return title
+    }()
+    
+    private lazy var teamLabel: UILabel = {
+        let title = UILabel()
+        let team = self.scannerResult?.team ?? 0
+        title.text = team != 0 ? "\(team)" : "Unknown"
         title.font = UIFont.sfuiMedium()
         title.textAlignment = .left
         return title
@@ -106,8 +124,10 @@ class QRScannerResultPopupView: UIViewController {
         
         self.boundTitle.addSubview(self.nameTitle)
         self.boundTitle.addSubview(self.identifyTitle)
+        self.boundTitle.addSubview(self.teamTitle)
         self.boundInfo.addSubview(self.nameLabel)
         self.boundInfo.addSubview(self.identifyLabel)
+        self.boundInfo.addSubview(self.teamLabel)
         self.contentView.addSubview(self.boundTitle)
         self.contentView.addSubview(self.boundInfo)
         
@@ -122,8 +142,15 @@ class QRScannerResultPopupView: UIViewController {
             make.height.greaterThanOrEqualTo(20)
         }
         self.identifyTitle.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalToSuperview()
+            make.left.right.equalToSuperview()
             make.top.equalTo(self.nameTitle.snp.bottom).offset(6)
+            make.height.greaterThanOrEqualTo(0)
+        }
+        
+        self.teamTitle.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.identifyTitle.snp.bottom).offset(6)
+            make.bottom.equalToSuperview()
         }
         
         self.nameLabel.snp.makeConstraints { (make) in
@@ -131,8 +158,15 @@ class QRScannerResultPopupView: UIViewController {
             make.height.greaterThanOrEqualTo(20)
         }
         self.identifyLabel.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalToSuperview()
+            make.left.right.equalToSuperview()
             make.top.equalTo(self.nameTitle.snp.bottom).offset(6)
+            make.height.greaterThanOrEqualTo(0)
+        }
+        
+        self.teamLabel.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.identifyLabel.snp.bottom).offset(6)
+            make.bottom.equalToSuperview()
         }
         
         self.boundTitle.snp.makeConstraints { (make) in
@@ -203,10 +237,6 @@ class QRScannerResultPopupView: UIViewController {
         self.setupView()
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancelBtnTapped(_:)))
         self.maskView.addGestureRecognizer(self.tapGesture)
-        guard let urlString = self.scannerResult?.identify else { return }
-//        ServerServices.sharedInstance.downloadImage(key: urlString) { (image) in
-//            self.imageView.image = image
-//        }
     }
     
     //MARK: - Functions

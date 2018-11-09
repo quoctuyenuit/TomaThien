@@ -9,6 +9,9 @@
 import Foundation
 import Firebase
 import RxSwift
+import SystemConfiguration
+
+
 
 class ServerServices {
     static public let sharedInstance = ServerServices()
@@ -24,7 +27,7 @@ class ServerServices {
     }
     
     init() {
-        Database.database().isPersistenceEnabled = true
+//        Database.database().isPersistenceEnabled = true
     }
     
     public func pullData(path: String) -> Observable<DataSnapshot> {
@@ -41,7 +44,17 @@ class ServerServices {
     }
     
     public func pushData(path: String, value: Any) {
-        self.databaseReference.child(path).setValue(value)
+        if Reachability.isConnectedToNetwork().not {
+            print("Network is not available")
+        }
+        self.databaseReference.child(path).setValue(value) { (error, reference) in
+            if let error = error {
+                print("[CannotPushData] \(error.localizedDescription)")
+            } else {
+                print("Push data completed \(reference.key)")
+            }
+        }
+        
     }
     
     public func observe(path: String, doSomething: @escaping (DataSnapshot) -> ()) {
@@ -49,33 +62,33 @@ class ServerServices {
             doSomething(snapshot)
         }
     }
-        
     
-//    public func pushImage(path: String, image: UIImage) {
-//        let ref = self.storageReference.child(path)
-//        self.uploadImage(key: ref.name) { (reponse) in
-//            switch reponse {
-//            case .susscess(_):
-//                print("Image was uploaded")
-//            case .fail(let error):
-//                print("Upload image was fail with \(error)")
-//            }
-//        }
-//    }
-//
-//    private func uploadImage(key: String, completion: @escaping (_ resonse: Response<Any>) -> Void) {
-//        let storageRef = self.storageReference.child("\(key).png")
-//        if let uploadData = UIImage(named: "qrcode")!.pngData() {
-//            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-//                if let error = error {
-//                    completion(Response.fail(error))
-//                } else {
-//                    guard let path = metadata?.path else { return }
-//                    completion(Response.susscess(path))
-//                }
-//            }
-//        }
-//    }
+    
+    public func pushImage(path: String, image: UIImage) {
+        let ref = self.storageReference.child(path)
+        self.uploadImage(key: ref.name) { (reponse) in
+            switch reponse {
+            case .susscess(_):
+                print("Image was uploaded")
+            case .fail(let error):
+                print("Upload image was fail with \(error)")
+            }
+        }
+    }
+
+    private func uploadImage(key: String, completion: @escaping (_ resonse: Response<Any>) -> Void) {
+        let storageRef = self.storageReference.child("\(key).png")
+        if let uploadData = UIImage(named: "qrcode")!.pngData() {
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if let error = error {
+                    completion(Response.fail(error))
+                } else {
+                    guard let path = metadata?.path else { return }
+                    completion(Response.susscess(path))
+                }
+            }
+        }
+    }
 //
 //    func downloadImage(key: String, completion: @escaping (_ image: UIImage) -> ()) {
 //        if let cacheImage = self.imageCache.object(forKey: "\(key).png" as NSString) {
@@ -111,4 +124,41 @@ class ServerServices {
 //            }
 //        }
 //    }
+}
+
+
+public class Reachability {
+    
+    class func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
+    }
 }

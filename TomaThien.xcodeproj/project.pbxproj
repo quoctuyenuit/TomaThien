@@ -40,6 +40,12 @@
 		3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */; };
 		3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */; };
 		3D54E861218DFB0900607EE5 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D54E860218DFB0900607EE5 /* QRScannerViewController.swift */; };
+		3D5CFA1121952979009C4116 /* ShowQRCodeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CFA1021952979009C4116 /* ShowQRCodeProtocols.swift */; };
+		3D5CFA1321952BC2009C4116 /* QRCodeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CFA1221952BC2009C4116 /* QRCodeRouter.swift */; };
+		3D5CFA1521952BF0009C4116 /* QRCodeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CFA1421952BF0009C4116 /* QRCodeInteractor.swift */; };
+		3D5CFA1721952C10009C4116 /* QRCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CFA1621952C10009C4116 /* QRCodePresenter.swift */; };
+		3D5CFA1921952D6C009C4116 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CFA1821952D6C009C4116 /* QRCodeViewController.swift */; };
+		3D67C62B2190A4FA004A8D26 /* QRScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67C62A2190A4FA004A8D26 /* QRScannerStore.swift */; };
 		3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7321875DF2008C02CF /* FileHelper.swift */; };
 		3D903F7621876803008C02CF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7521876803008C02CF /* Extension.swift */; };
 		3D953F5D2185E26500976811 /* QRScannerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F5C2185E26500976811 /* QRScannerCamera.swift */; };
@@ -120,6 +126,12 @@
 		3D5471F22189F13000A9CFF3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		3D5471F42189F14100A9CFF3 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		3D54E860218DFB0900607EE5 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		3D5CFA1021952979009C4116 /* ShowQRCodeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQRCodeProtocols.swift; sourceTree = "<group>"; };
+		3D5CFA1221952BC2009C4116 /* QRCodeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRouter.swift; sourceTree = "<group>"; };
+		3D5CFA1421952BF0009C4116 /* QRCodeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeInteractor.swift; sourceTree = "<group>"; };
+		3D5CFA1621952C10009C4116 /* QRCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePresenter.swift; sourceTree = "<group>"; };
+		3D5CFA1821952D6C009C4116 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		3D67C62A2190A4FA004A8D26 /* QRScannerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerStore.swift; sourceTree = "<group>"; };
 		3D903F7321875DF2008C02CF /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		3D903F7521876803008C02CF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3D953F5C2185E26500976811 /* QRScannerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerCamera.swift; sourceTree = "<group>"; };
@@ -317,6 +329,7 @@
 		3D453E212186989F00396F4D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				3D67C62A2190A4FA004A8D26 /* QRScannerStore.swift */,
 				3D453E22218698B100396F4D /* QRScannerResult.swift */,
 				3D903F7321875DF2008C02CF /* FileHelper.swift */,
 			);
@@ -386,6 +399,7 @@
 		3D5471D12189D4A500A9CFF3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3D5CFA0A2195294A009C4116 /* ShowQRCode */,
 				3D272ECC218D5573001C6BFA /* TabBarViewController */,
 				3D272EBB218D4B58001C6BFA /* Main */,
 				3D3870A4218D2F90007B7BC3 /* Home */,
@@ -480,6 +494,58 @@
 				3D5471EA2189EDF400A9CFF3 /* TextField.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		3D5CFA0A2195294A009C4116 /* ShowQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA0F21952969009C4116 /* Protocol */,
+				3D5CFA0E21952964009C4116 /* Router */,
+				3D5CFA0C21952957009C4116 /* Interactor */,
+				3D5CFA0D2195295C009C4116 /* Presenter */,
+				3D5CFA0B21952952009C4116 /* View */,
+			);
+			path = ShowQRCode;
+			sourceTree = "<group>";
+		};
+		3D5CFA0B21952952009C4116 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA1821952D6C009C4116 /* QRCodeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D5CFA0C21952957009C4116 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA1421952BF0009C4116 /* QRCodeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3D5CFA0D2195295C009C4116 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA1621952C10009C4116 /* QRCodePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D5CFA0E21952964009C4116 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA1221952BC2009C4116 /* QRCodeRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3D5CFA0F21952969009C4116 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3D5CFA1021952979009C4116 /* ShowQRCodeProtocols.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3D6DF529218DA5F500F41CFF /* SubViews */ = {
@@ -945,8 +1011,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TomaThien/Pods-TomaThien-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
@@ -961,8 +1030,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
@@ -996,9 +1068,11 @@
 				3DEB55F12180C68300A00700 /* ViewController.swift in Sources */,
 				3D272EBD218D4B71001C6BFA /* MainViewController.swift in Sources */,
 				3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */,
+				3D5CFA1121952979009C4116 /* ShowQRCodeProtocols.swift in Sources */,
 				3DEB55EF2180C68300A00700 /* AppDelegate.swift in Sources */,
 				3D5471E62189DC5D00A9CFF3 /* LocalUser.swift in Sources */,
 				3D953F5D2185E26500976811 /* QRScannerCamera.swift in Sources */,
+				3D5CFA1321952BC2009C4116 /* QRCodeRouter.swift in Sources */,
 				3D272ED0218D5632001C6BFA /* TabBarViewController.swift in Sources */,
 				3D953FCA21860F9600976811 /* AppUtility.swift in Sources */,
 				3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */,
@@ -1013,6 +1087,8 @@
 				3D953F6B2185E74E00976811 /* QRScannerPresenter.swift in Sources */,
 				3D5471ED2189F05500A9CFF3 /* RegisterViewController.swift in Sources */,
 				3D953FCF2186145E00976811 /* UIFont+Extension.swift in Sources */,
+				3D5CFA1521952BF0009C4116 /* QRCodeInteractor.swift in Sources */,
+				3D67C62B2190A4FA004A8D26 /* QRScannerStore.swift in Sources */,
 				3D54E861218DFB0900607EE5 /* QRScannerViewController.swift in Sources */,
 				3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */,
 				3D5471DE2189D6D900A9CFF3 /* UIImage+Extension.swift in Sources */,
@@ -1022,6 +1098,7 @@
 				3D272EC9218D5022001C6BFA /* UIAppDelegate.swift in Sources */,
 				3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */,
 				3D272ECB218D5121001C6BFA /* UIAppDelegate+Extension.swift in Sources */,
+				3D5CFA1721952C10009C4116 /* QRCodePresenter.swift in Sources */,
 				3D953FC72186063D00976811 /* UIColor+Extension.swift in Sources */,
 				3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */,
 				3D3870B1218D3072007B7BC3 /* HomeInteractor.swift in Sources */,
@@ -1031,6 +1108,7 @@
 				3D272ED3218D5D94001C6BFA /* LoginManager.swift in Sources */,
 				3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */,
 				3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */,
+				3D5CFA1921952D6C009C4116 /* QRCodeViewController.swift in Sources */,
 				3D5471F12189F10A00A9CFF3 /* RegisterPresenter.swift in Sources */,
 				3D5471C12189A53500A9CFF3 /* LoginProtocols.swift in Sources */,
 			);

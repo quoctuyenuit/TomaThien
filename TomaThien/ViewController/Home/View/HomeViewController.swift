@@ -13,29 +13,29 @@ private let reuseIdentifier = "Cell"
 
 class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: HomePresenterProtocol?
-    
+    var parentView: UIViewController?
     //MARK: - Constant variable
-    private let headerHeight: CGFloat = 40
+    private let headerHeight: CGFloat = 44
     
     private lazy var items: [HomeCellModel] = {
         var items = [HomeCellModel]()
         switch LoginManager.sharedInstance.user?.userType {
         case .admin?:
             items = [
-                HomeCellModel(identify: .qrCode, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
+                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
                 HomeCellModel(identify: .report, image: UIImage(named: "ico_report"), title: "Báo cáo"),
                 HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server")
             ]
         case .sublead?:
             items = [
-                HomeCellModel(identify: .qrCode, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
+                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
                 HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server")
             ]
         case .member?:
             items = [
-                HomeCellModel(identify: .qrCode, image: UIImage(named: "ico_show_qrcode"), title: "Xuất mã QR"),
+                HomeCellModel(identify: .qrCodeView, image: UIImage(named: "ico_show_qrcode"), title: "Xuất mã QR"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
                 HomeCellModel(identify: .checkRegister, image: UIImage(named: "ico_check"), title: "Kiểm tra điểm danh")
             ]
@@ -99,14 +99,14 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         self.setupHeaderView()
         self.setupCollectionView()
         self.view.backgroundColor = .appBase
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     private func setupCollectionView() {
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.equalTo(self.headerBoundView.snp.bottom)
+            make.top.equalTo(self.headerBoundView.snp.bottom).offset(5)
         }
     }
     
@@ -155,8 +155,12 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.items[indexPath.row]
         switch item.identify {
-        case .qrCode:
-            self.presenter?.showQRScanner()
+        case .qrCodeScanner:
+            let scannerViewController = QRScannerRouter.createQRScanner()
+            self.parentView?.navigationController?.pushViewController(scannerViewController, animated: true)
+        case .qrCodeView:
+            let qrCodeView = QRCodeRouter.createQRCodeViewController()
+            self.parentView?.navigationController?.pushViewController(qrCodeView, animated: true)
         default:
             break
         }

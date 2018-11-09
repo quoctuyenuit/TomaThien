@@ -16,7 +16,8 @@ target 'TomaThien' do
   pod 'AlamofireImage', '~> 3.4'
   pod 'SQLite.swift', '~> 0.11.5'
   pod 'UICollectionViewLeftAlignedLayout'
-
+  pod 'PINRemoteImage'
+  
   target 'TomaThienTests' do
     inherit! :search_paths
     # Pods for testing
