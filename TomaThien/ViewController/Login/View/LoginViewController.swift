@@ -49,6 +49,8 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         textField.textField.placeholder = "Nhập email nhé"
         textField.textField.textColor = .black
         textField.textField.tintColor = .appBase
+        textField.textField.keyboardType = UIKeyboardType.default
+        textField.textField.keyboardAppearance = .dark
         return textField
     }()
     private lazy var passwordTextField: TextField = {
@@ -155,7 +157,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         self.mainBound.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         self.boundRegister.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -228,25 +230,63 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-//        self.setupEvent()
+        self.setupEvent()
     }
     
     private func setupEvent() {
-        Observable
-            .combineLatest(self.userNameTextField.rx.text.asObservable(),
-                                 self.passwordTextField.rx.text.asObservable())
-            .subscribe(onNext: { (userName, password) in
-                guard
-                    let userName = userName,
-                    let password = password else { return }
-                
-                if userName.isEmpty || password.isEmpty {
-                    self.loginButton.isEnabled = false
-                } else {
-                    self.loginButton.isEnabled = true
-                }
-            })
-            .disposed(by: self.disposeBag)
+//        Observable
+//            .combineLatest(self.userNameTextField.rx.text.asObservable(),
+//                                 self.passwordTextField.rx.text.asObservable())
+//            .subscribe(onNext: { (userName, password) in
+//                guard
+//                    let userName = userName,
+//                    let password = password else { return }
+//
+//                if userName.isEmpty || password.isEmpty {
+//                    self.loginButton.isEnabled = false
+//                } else {
+//                    self.loginButton.isEnabled = true
+//                }
+//            })
+//            .disposed(by: self.disposeBag)
+        
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWasShown(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc private func keyboardWasShown(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            guard
+                let info = notification.userInfo,
+                let keyboardFrameValue = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
+                let activeTextField = UIResponder.currentFirst() as? UITextField,
+                let superActiveTextField = activeTextField.superview
+                else { return }
+            
+            let padding: CGFloat = 5
+            let originY = self.view.convert(activeTextField.frame, from: superActiveTextField).origin.y
+            let height = self.view.frame.height - originY - activeTextField.frame.height - padding
+            let keyboardHeight = keyboardFrameValue.cgRectValue.size.height
+            let gap = keyboardHeight - height
+            
+            if gap > 0 {
+                self.mainBound.transform = CGAffineTransform(translationX: 0, y: -gap)
+            }
+            
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.mainBound.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
     }
     
     @objc private func loginTapped(_ sender: UIButton) {
@@ -277,5 +317,11 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     @objc private func registerTapped(_ sender: UIButton) {
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.userNameTextField.textField.endEditing(true)
+        self.passwordTextField.textField.endEditing(true)
     }
 }
