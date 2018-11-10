@@ -22,13 +22,13 @@ public class Student {
     var yearsOfStudy: Float
     var team: Int
     var identify: String
-    var image: String //Link download
+    var imageUrl: String //Link download
     
     public var key: String {
         return self.identify.lowercased()
     }
     
-    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, image: String) {
+    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, imageUrl: String) {
         self.name = name
         self.birthDay = birthDay
         self.phoneNumber = phoneNumber
@@ -39,7 +39,7 @@ public class Student {
         self.yearOfAdmission = yearOfAdmission
         self.yearsOfStudy = yearsOfStudy
         self.team = team
-        self.image = image
+        self.imageUrl = imageUrl
     }
     
     convenience init?(snapshot: DataSnapshot) {
@@ -55,7 +55,7 @@ public class Student {
             let yearOfAdmission = value["yearOfAdmission"] as? Int,
             let yearsOfStudy = value["yearsOfStudy"] as? Float,
             let team = value["team"] as? Int,
-            let image = value["image"] as? String
+            let imageUrl = value["image"] as? String
             else {
                 return nil
         }
@@ -74,7 +74,7 @@ public class Student {
                   yearOfAdmission: yearOfAdmission,
                   yearsOfStudy: yearsOfStudy,
                   team: team,
-                  image: image)
+                  imageUrl: imageUrl)
         
         self.ref = snapshot.ref
     }
@@ -94,7 +94,7 @@ public class Student {
             "yearOfAdmission": self.yearOfAdmission,
             "yearsOfStudy": self.yearsOfStudy,
             "team": self.team,
-            "image": self.image
+            "imageUrl": self.imageUrl
         ]
     }
 }

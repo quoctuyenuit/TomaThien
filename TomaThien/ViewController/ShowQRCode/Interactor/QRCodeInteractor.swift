@@ -13,7 +13,7 @@ class QRCodeInteractor: QRCodeInteractorProtocol {
         let id = userInfo.identify
         let name = userInfo.name
         let team = userInfo.team
-        let imageUrl = userInfo.image
+        let imageUrl = userInfo.imageUrl
         
         let dictionary: NSDictionary = [
             "identify": id,

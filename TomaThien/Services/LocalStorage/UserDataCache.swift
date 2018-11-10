@@ -22,8 +22,8 @@ class UserDataCache: SqliteDatabase {
     private let yearOfAdmission = Expression<Int?>("yearOfAdmission")
     private let yearsOfStudy = Expression<String?>("yearsOfStudy")
     private let team = Expression<Int?>("team")
-    private let image = Expression<String?>("image")
-    private let userType = Expression<Int?>("image")
+    private let image = Expression<Data?>("image")
+    private let userType = Expression<Int?>("userType")
     private let status = Expression<Bool?>("status")
     
     public static let sharedInstance = UserDataCache()
@@ -78,6 +78,8 @@ class UserDataCache: SqliteDatabase {
         var user: LocalUser?
         
         try? self.database.prepare(element).forEach({ (row) in
+            
+            let img = UIImage(data: row[image] ?? Data())
             user = LocalUser(name: row[name] ?? "",
                              birthDay: row[birthDay] ?? Date(),
                              phoneNumber: row[phoneNumber] ?? "",
@@ -88,7 +90,7 @@ class UserDataCache: SqliteDatabase {
                              yearOfAdmission: row[yearOfAdmission] ?? 0,
                              yearsOfStudy: Float.init(row[yearsOfStudy] ?? "0") ?? 0,
                              team: row[team] ?? 0,
-                             image: row[image] ?? "",
+                             image: img ?? UIImage(),
                              userType: UserType(rawValue: row[userType] ?? 1) ?? .member,
                              status: (row[status] ?? false) ? .authentic : .notAuthentic)
         })
@@ -97,6 +99,7 @@ class UserDataCache: SqliteDatabase {
     
     public func update(id: String, value: LocalUser) throws {
         let student = self.userTable.filter(self.identify == id)
+        let imageData = value.image?.jpeg(quality: .medium)
         try self.database.run(student.update(identify <- value.identify.encodeId(),
                                              name <- value.name,
                                              birthDay <- value.birthDay,
@@ -107,6 +110,7 @@ class UserDataCache: SqliteDatabase {
                                              yearOfAdmission <- value.yearOfAdmission,
                                              yearsOfStudy <- "\(value.yearsOfStudy)",
                                              team <- value.team,
+                                             image <- imageData,
                                              userType <- value.userType.rawValue,
                                              status <- value.status == .authentic ? true : false))
     }

@@ -27,7 +27,7 @@ class QRCodeViewController: UIViewController, QRCodeViewProtocol {
     
     private lazy var icon: UIImageView = {
         let imageView = UIImageView()
-        imageView.pin_setImage(from: URL(string: self.userInfo?.image ?? ""))
+        imageView.pin_setImage(from: URL(string: self.userInfo?.imageUrl ?? ""))
         imageView.layer.cornerRadius = iconSize / 2
         imageView.backgroundColor = .white
         imageView.clearsContextBeforeDrawing = true

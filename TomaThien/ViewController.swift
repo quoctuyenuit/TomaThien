@@ -63,7 +63,7 @@ class ViewController: UIViewController {
                               yearOfAdmission: 2015,
                               yearsOfStudy: Float(4.5),
                               team: 8,
-                              image: imageString)
+                              imageUrl: imageString)
         
 //        ServerServices.sharedInstance.pushData(path: "StudentList/\(student.key)", value: student.toObject())
         

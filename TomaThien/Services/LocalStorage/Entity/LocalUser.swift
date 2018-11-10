@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum UserType: Int {
     case member = 1
@@ -22,20 +23,23 @@ enum UserStatus: Int {
 class LocalUser: Student {
     var userType: UserType = .member
     var status: UserStatus = .notAuthentic
+    var image: UIImage?
     
-    init(name: String,
-                birthDay: Date,
-                phoneNumber: String,
-                email: String,
-                identify: String,
-                school: String,
-                address: String,
-                yearOfAdmission: Int,
-                yearsOfStudy: Float,
-                team: Int,
-                image: String,
-                userType: UserType,
-                status: UserStatus) {
+    init(
+        name: String,
+        birthDay: Date,
+        phoneNumber: String,
+        email: String,
+        identify: String,
+        school: String,
+        address: String,
+        yearOfAdmission: Int,
+        yearsOfStudy: Float,
+        team: Int,
+        image: UIImage,
+        userType: UserType,
+        status: UserStatus) {
+        
         super.init(name: name,
                   birthDay: birthDay,
                   phoneNumber: phoneNumber,
@@ -46,8 +50,9 @@ class LocalUser: Student {
                   yearOfAdmission: yearOfAdmission,
                   yearsOfStudy: yearsOfStudy,
                   team: team,
-                  image: image)
+                  imageUrl: "")
         self.userType = userType
         self.status = status
+        self.image = image
     }
 }

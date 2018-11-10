@@ -250,6 +250,19 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     }
     
     @objc private func registerTapped(_ sender: UIButton) {
-        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = "dd/MM/yyyy"
+//        let user = LocalUser(name: "Nguyễn Văn A",
+//                             birthDay: formatter.date(from: "26/06/1997") ?? Date(),
+//                             phoneNumber: "0968329208",
+//                             email: "quoctuyen9aht@gmail.com",
+//                             identify: "184313135",
+//                             school: "ĐH CNTT",
+//                             address: "KTX Khu B",
+//                             yearOfAdmission: 2015,
+//                             yearsOfStudy: 4.5,
+//                             team: 8,
+//                             image: <#T##String#>, userType: <#T##UserType#>, status: <#T##UserStatus#>)
     }
 }

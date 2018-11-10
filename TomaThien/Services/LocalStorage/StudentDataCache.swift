@@ -26,7 +26,7 @@ struct StudentData {
 class StudentDataCache: SqliteDatabase {
     private var studentTable: Table!
     private let colId = Expression<String>("id")
-    private let colImage = Expression<String?>("image")
+    private let colImage = Expression<String?>("imageUrl")
     
     public static let sharedInstance = StudentDataCache()
     

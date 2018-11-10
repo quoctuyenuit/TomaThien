@@ -301,7 +301,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4,
                              team: 8,
-                             image: "https://firebasestorage.googleapis.com/v0/b/tomathien-a3309.appspot.com/o/tuyenktpm2015.jpg?alt=media&token=0de3d70c-f5a1-49a2-9adf-f554cbcd1535",
+                             image: UIImage(),
                              userType: .admin,
                              status: .authentic)
         LoginManager.sharedInstance.user = user
