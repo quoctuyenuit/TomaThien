@@ -11,7 +11,9 @@ import Firebase
 import RxSwift
 import SystemConfiguration
 
-
+enum ServerServicesErrors: String, Error {
+    case noInternet = "Network is not available"
+}
 
 class ServerServices {
     static public let sharedInstance = ServerServices()
@@ -28,6 +30,7 @@ class ServerServices {
     
     init() {
 //        Database.database().isPersistenceEnabled = true
+        Database.database().reference().child("RegistionList").keepSynced(true)
     }
     
     public func pullData(path: String) -> Observable<DataSnapshot> {
@@ -43,18 +46,17 @@ class ServerServices {
         }
     }
     
-    public func pushData(path: String, value: Any) {
+    public func pullListData(path: String, completion: @escaping (DataSnapshot) -> ()) {
+        self.databaseReference.child(path).observe(.value) { (snapshot) in
+            completion(snapshot)
+        }
+    }
+    
+    public func pushData(path: String, value: Any, completion: @escaping (Error?, DatabaseReference?) -> ()) {
         if Reachability.isConnectedToNetwork().not {
-            print("Network is not available")
+            completion(ServerServicesErrors.noInternet, nil)
         }
-        self.databaseReference.child(path).setValue(value) { (error, reference) in
-            if let error = error {
-                print("[CannotPushData] \(error.localizedDescription)")
-            } else {
-                print("Push data completed \(reference.key)")
-            }
-        }
-        
+        self.databaseReference.child(path).setValue(value, withCompletionBlock: completion)
     }
     
     public func observe(path: String, doSomething: @escaping (DataSnapshot) -> ()) {

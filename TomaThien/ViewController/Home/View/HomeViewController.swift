@@ -8,12 +8,14 @@
 
 import UIKit
 import UICollectionViewLeftAlignedLayout
+import RxSwift
 
 private let reuseIdentifier = "Cell"
 
 class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: HomePresenterProtocol?
     var parentView: UIViewController?
+    private let disposeBag = DisposeBag()
     //MARK: - Constant variable
     private let headerHeight: CGFloat = 44
     
@@ -93,6 +95,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         super.viewDidLoad()
         self.setupView()
         self.collectionView.indicatorStyle = .white
+        self.getNotification()
     }
     
     private func setupView() {
@@ -164,5 +167,15 @@ extension HomeViewController: UICollectionViewDataSource {
         default:
             break
         }
+    }
+}
+
+extension HomeViewController {
+    private func getNotification() {
+        ServerServices.sharedInstance
+            .pullListData(path: "Notification"){ (snapshot) in
+                guard let data = snapshot.value as? [String: Any] else { return }
+                print(data)
+            }
     }
 }

@@ -65,7 +65,7 @@ class ViewController: UIViewController {
                               team: 8,
                               image: imageString)
         
-        ServerServices.sharedInstance.pushData(path: "StudentList/\(student.key)", value: student.toObject())
+//        ServerServices.sharedInstance.pushData(path: "StudentList/\(student.key)", value: student.toObject())
         
 //        ServerServices.sharedInstance.pushImage(path: student.key, image: image)
         
