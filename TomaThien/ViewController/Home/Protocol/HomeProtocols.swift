@@ -20,6 +20,7 @@ protocol HomePresenterProtocol {
     
     //View -> Presenter
     func showQRScanner()
+    func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol])
     
 }
 protocol HomeInteractorProtocol {
@@ -29,4 +30,5 @@ protocol HomeRouterProtocol {
     static func mainStoryboard() -> UIStoryboard
     static func createHomeViewController() -> UIViewController
     func showQRScanner()
+    func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol])
 }

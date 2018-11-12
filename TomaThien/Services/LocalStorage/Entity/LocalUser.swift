@@ -8,12 +8,7 @@
 
 import Foundation
 import UIKit
-
-enum UserType: Int {
-    case member = 1
-    case sublead = 2
-    case admin = 3
-}
+import Firebase
 
 enum UserStatus: Int {
     case authentic = 0
@@ -21,7 +16,6 @@ enum UserStatus: Int {
 }
 
 class LocalUser: Student {
-    var userType: UserType = .member
     var status: UserStatus = .notAuthentic
     var image: UIImage?
     
@@ -36,9 +30,9 @@ class LocalUser: Student {
         yearOfAdmission: Int,
         yearsOfStudy: Float,
         team: Int,
-        image: UIImage,
+        image: UIImage?,
         userType: UserType,
-        status: UserStatus) {
+        status: UserStatus = .notAuthentic) {
         
         super.init(name: name,
                   birthDay: birthDay,
@@ -54,5 +48,30 @@ class LocalUser: Student {
         self.userType = userType
         self.status = status
         self.image = image
+    }
+    
+    override init?(snapshot: DataSnapshot) {
+        super.init(snapshot: snapshot)
+    }
+    
+    override func toObject() -> Any {
+        let dateFormatted = DateFormatter()
+        dateFormatted.dateFormat = "dd/MM/yyyy"
+        
+        return [
+            "name": self.name,
+            "birthDay": dateFormatted.string(from: self.birthDay),
+            "phoneNumber": self.phoneNumber,
+            "email": self.email,
+            "identify": self.identify,
+            "school": self.school,
+            "address": self.address,
+            "yearOfAdmission": self.yearOfAdmission,
+            "yearsOfStudy": self.yearsOfStudy,
+            "team": self.team,
+            "imageUrl": self.imageUrl,
+            "userType": self.userType.rawValue,
+            "time": dateFormatted.string(from: Date())
+        ]
     }
 }

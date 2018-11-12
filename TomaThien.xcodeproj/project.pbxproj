@@ -29,7 +29,6 @@
 		3D5471C72189A5C300A9CFF3 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C62189A5C300A9CFF3 /* LoginInteractor.swift */; };
 		3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471C82189A5D200A9CFF3 /* LoginRouter.swift */; };
 		3D5471CD2189CF4800A9CFF3 /* SqliteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */; };
-		3D5471DC2189D54B00A9CFF3 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */; };
 		3D5471DE2189D6D900A9CFF3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471DD2189D6D900A9CFF3 /* UIImage+Extension.swift */; };
 		3D5471E62189DC5D00A9CFF3 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */; };
 		3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */; };
@@ -48,6 +47,9 @@
 		3D67C62B2190A4FA004A8D26 /* QRScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67C62A2190A4FA004A8D26 /* QRScannerStore.swift */; };
 		3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7321875DF2008C02CF /* FileHelper.swift */; };
 		3D903F7621876803008C02CF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D903F7521876803008C02CF /* Extension.swift */; };
+		3D91C75C219873FC003897CD /* RegistationNotifyDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91C75B219873FC003897CD /* RegistationNotifyDetailProtocols.swift */; };
+		3D91C75E219875AA003897CD /* RegistationNotifyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91C75D219875AA003897CD /* RegistationNotifyDetailViewController.swift */; };
+		3D91C79221988E1C003897CD /* RegistationNotifyDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91C79121988E1C003897CD /* RegistationNotifyDetailRouter.swift */; };
 		3D953F5D2185E26500976811 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F5C2185E26500976811 /* QRScannerViewController.swift */; };
 		3D953F652185E61500976811 /* QRScannerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F642185E61500976811 /* QRScannerProtocols.swift */; };
 		3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953F662185E6DF00976811 /* QRScannerRouter.swift */; };
@@ -57,6 +59,19 @@
 		3D953FCA21860F9600976811 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953FC921860F9600976811 /* AppUtility.swift */; };
 		3D953FCD218612CC00976811 /* QRScannerResultPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953FCC218612CC00976811 /* QRScannerResultPopupView.swift */; };
 		3D953FCF2186145E00976811 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953FCE2186145E00976811 /* UIFont+Extension.swift */; };
+		3DACC6312197EC0C0052673B /* NotificationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC6302197EC0C0052673B /* NotificationProtocols.swift */; };
+		3DACC6332197EF3A0052673B /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC6322197EF3A0052673B /* NotificationViewController.swift */; };
+		3DACC6352197F2820052673B /* NotificationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC6342197F2820052673B /* NotificationViewCell.swift */; };
+		3DACC6382197F9690052673B /* NotificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC6372197F9690052673B /* NotificationEntity.swift */; };
+		3DACC63A2197FDCA0052673B /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC6392197FDCA0052673B /* NotificationPresenter.swift */; };
+		3DACC63C2197FDEE0052673B /* NotificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC63B2197FDEE0052673B /* NotificationInteractor.swift */; };
+		3DACC63E2197FDFE0052673B /* NotificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACC63D2197FDFE0052673B /* NotificationRouter.swift */; };
+		3DE78F0521990EFC00E2B0B6 /* RegistationNotifyDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE78F0421990EFC00E2B0B6 /* RegistationNotifyDetailPresenter.swift */; };
+		3DE78F0A21990FF300E2B0B6 /* UserTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE78F0921990FF300E2B0B6 /* UserTypeListViewController.swift */; };
+		3DE78F0C2199171800E2B0B6 /* RegistationNotifyDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE78F0B2199171800E2B0B6 /* RegistationNotifyDetailInteractor.swift */; };
+		3DE87B2C2199CE1400CF943F /* TeamDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE87B2B2199CE1400CF943F /* TeamDataCache.swift */; };
+		3DE87B2E2199CF6900CF943F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE87B2D2199CF6900CF943F /* Team.swift */; };
+		3DE87B302199DE1900CF943F /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE87B2F2199DE1900CF943F /* TeamListViewController.swift */; };
 		3DEB55EF2180C68300A00700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB55EE2180C68300A00700 /* AppDelegate.swift */; };
 		3DEB55F12180C68300A00700 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB55F02180C68300A00700 /* ViewController.swift */; };
 		3DEB55F42180C68300A00700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEB55F22180C68300A00700 /* Main.storyboard */; };
@@ -68,6 +83,7 @@
 		3DEB56202180CD9F00A00700 /* ServerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB561F2180CD9F00A00700 /* ServerServices.swift */; };
 		3DEB56232180CFD500A00700 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB56222180CFD500A00700 /* Student.swift */; };
 		3DEB9A22219715F900F25524 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB9A21219715F900F25524 /* UIResponder+Extension.swift */; };
+		3DEB9A242197304900F25524 /* UIButtonWithBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB9A232197304900F25524 /* UIButtonWithBadge.swift */; };
 		3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4AE2187F2D600A4E58E /* ToastView.swift */; };
 		3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */; };
 		461FBAC1C5001C4A627F5AF3 /* Pods_TomaThienUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3413263DB269E4A65D9041E /* Pods_TomaThienUITests.framework */; };
@@ -116,7 +132,6 @@
 		3D5471C62189A5C300A9CFF3 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		3D5471C82189A5D200A9CFF3 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteDatabase.swift; sourceTree = "<group>"; };
-		3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		3D5471DD2189D6D900A9CFF3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCache.swift; sourceTree = "<group>"; };
@@ -135,6 +150,9 @@
 		3D67C62A2190A4FA004A8D26 /* QRScannerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerStore.swift; sourceTree = "<group>"; };
 		3D903F7321875DF2008C02CF /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		3D903F7521876803008C02CF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3D91C75B219873FC003897CD /* RegistationNotifyDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationNotifyDetailProtocols.swift; sourceTree = "<group>"; };
+		3D91C75D219875AA003897CD /* RegistationNotifyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationNotifyDetailViewController.swift; sourceTree = "<group>"; };
+		3D91C79121988E1C003897CD /* RegistationNotifyDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationNotifyDetailRouter.swift; sourceTree = "<group>"; };
 		3D953F5C2185E26500976811 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		3D953F642185E61500976811 /* QRScannerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerProtocols.swift; sourceTree = "<group>"; };
 		3D953F662185E6DF00976811 /* QRScannerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerRouter.swift; sourceTree = "<group>"; };
@@ -144,6 +162,19 @@
 		3D953FC921860F9600976811 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		3D953FCC218612CC00976811 /* QRScannerResultPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerResultPopupView.swift; sourceTree = "<group>"; };
 		3D953FCE2186145E00976811 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		3DACC6302197EC0C0052673B /* NotificationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProtocols.swift; sourceTree = "<group>"; };
+		3DACC6322197EF3A0052673B /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		3DACC6342197F2820052673B /* NotificationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewCell.swift; sourceTree = "<group>"; };
+		3DACC6372197F9690052673B /* NotificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEntity.swift; sourceTree = "<group>"; };
+		3DACC6392197FDCA0052673B /* NotificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
+		3DACC63B2197FDEE0052673B /* NotificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInteractor.swift; sourceTree = "<group>"; };
+		3DACC63D2197FDFE0052673B /* NotificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRouter.swift; sourceTree = "<group>"; };
+		3DE78F0421990EFC00E2B0B6 /* RegistationNotifyDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationNotifyDetailPresenter.swift; sourceTree = "<group>"; };
+		3DE78F0921990FF300E2B0B6 /* UserTypeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeListViewController.swift; sourceTree = "<group>"; };
+		3DE78F0B2199171800E2B0B6 /* RegistationNotifyDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationNotifyDetailInteractor.swift; sourceTree = "<group>"; };
+		3DE87B2B2199CE1400CF943F /* TeamDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDataCache.swift; sourceTree = "<group>"; };
+		3DE87B2D2199CF6900CF943F /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		3DE87B2F2199DE1900CF943F /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		3DEB55EB2180C68300A00700 /* TomaThien.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomaThien.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEB55EE2180C68300A00700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DEB55F02180C68300A00700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +192,7 @@
 		3DEB561F2180CD9F00A00700 /* ServerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerServices.swift; sourceTree = "<group>"; };
 		3DEB56222180CFD500A00700 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		3DEB9A21219715F900F25524 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
+		3DEB9A232197304900F25524 /* UIButtonWithBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonWithBadge.swift; sourceTree = "<group>"; };
 		3DF1E4AE2187F2D600A4E58E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListProtocols.swift; sourceTree = "<group>"; };
 		4081062385FB05E02D3ABB99 /* Pods-TomaThienTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThienTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThienTests/Pods-TomaThienTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +356,7 @@
 				3D3D437421895F520077E921 /* StudentDataCache.swift */,
 				3D5471CC2189CF4800A9CFF3 /* SqliteDatabase.swift */,
 				3D5471E72189E6DE00A9CFF3 /* UserDataCache.swift */,
+				3DE87B2B2199CE1400CF943F /* TeamDataCache.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -401,12 +434,12 @@
 		3D5471D12189D4A500A9CFF3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3D5CFA0A2195294A009C4116 /* ShowQRCode */,
-				3D272ECC218D5573001C6BFA /* TabBarViewController */,
-				3D272EBB218D4B58001C6BFA /* Main */,
+				3DACC62A2197EBAA0052673B /* Notification */,
 				3D3870A4218D2F90007B7BC3 /* Home */,
-				3DF1E4B52188071900A4E58E /* ShowList */,
+				3D5CFA0A2195294A009C4116 /* ShowQRCode */,
 				3D953F5E2185E5B900976811 /* QRScanner */,
+				3D272EBB218D4B58001C6BFA /* Main */,
+				3DF1E4B52188071900A4E58E /* ShowList */,
 				3D5471D32189D4ED00A9CFF3 /* Register */,
 				3D5471B82189A4FC00A9CFF3 /* Login */,
 			);
@@ -486,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				3D5471E52189DC5D00A9CFF3 /* LocalUser.swift */,
+				3DE87B2D2199CF6900CF943F /* Team.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -495,6 +529,7 @@
 			children = (
 				3D5471EA2189EDF400A9CFF3 /* TextField.swift */,
 				3D5CFA1A21958AB6009C4116 /* ToastViewController.swift */,
+				3DEB9A232197304900F25524 /* UIButtonWithBadge.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -557,6 +592,67 @@
 				3D3870B4218D37D5007B7BC3 /* HomeViewCell.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		3D91C754219873AE003897CD /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D91C755219873B6003897CD /* RegistationNotifyDetail */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		3D91C755219873B6003897CD /* RegistationNotifyDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3DE78F0821990FD800E2B0B6 /* SubViews */,
+				3D91C75A219873EB003897CD /* Protocol */,
+				3D91C759219873E5003897CD /* Router */,
+				3D91C758219873E1003897CD /* Interactor */,
+				3D91C757219873DC003897CD /* Presenter */,
+				3D91C756219873D2003897CD /* View */,
+			);
+			path = RegistationNotifyDetail;
+			sourceTree = "<group>";
+		};
+		3D91C756219873D2003897CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D91C75D219875AA003897CD /* RegistationNotifyDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D91C757219873DC003897CD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3DE78F0421990EFC00E2B0B6 /* RegistationNotifyDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D91C758219873E1003897CD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3DE78F0B2199171800E2B0B6 /* RegistationNotifyDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3D91C759219873E5003897CD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3D91C79121988E1C003897CD /* RegistationNotifyDetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3D91C75A219873EB003897CD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3D91C75B219873FC003897CD /* RegistationNotifyDetailProtocols.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3D953F5E2185E5B900976811 /* QRScanner */ = {
@@ -636,6 +732,78 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		3DACC62A2197EBAA0052673B /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				3D91C754219873AE003897CD /* SubViews */,
+				3DACC6362197F9590052673B /* Entity */,
+				3DACC62F2197EBD10052673B /* Protocol */,
+				3DACC62E2197EBCB0052673B /* Router */,
+				3DACC62D2197EBC70052673B /* Interactor */,
+				3DACC62C2197EBC20052673B /* Presenter */,
+				3DACC62B2197EBBA0052673B /* View */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		3DACC62B2197EBBA0052673B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC6322197EF3A0052673B /* NotificationViewController.swift */,
+				3DACC6342197F2820052673B /* NotificationViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3DACC62C2197EBC20052673B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC6392197FDCA0052673B /* NotificationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3DACC62D2197EBC70052673B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC63B2197FDEE0052673B /* NotificationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3DACC62E2197EBCB0052673B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC63D2197FDFE0052673B /* NotificationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3DACC62F2197EBD10052673B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC6302197EC0C0052673B /* NotificationProtocols.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3DACC6362197F9590052673B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3DACC6372197F9690052673B /* NotificationEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3DE78F0821990FD800E2B0B6 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3DE78F0921990FF300E2B0B6 /* UserTypeListViewController.swift */,
+				3DE87B2F2199DE1900CF943F /* TeamListViewController.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		3DEB55E22180C68300A00700 = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +832,7 @@
 				3D272ED1218D5D84001C6BFA /* Manager */,
 				3D272EC3218D4ED0001C6BFA /* AppDelegate */,
 				3D5471D22189D4C500A9CFF3 /* Services */,
+				3D272ECC218D5573001C6BFA /* TabBarViewController */,
 				3D5471D12189D4A500A9CFF3 /* ViewController */,
 				3DEB56212180CFC700A00700 /* Entity */,
 				3D953FC821860F8800976811 /* Common */,
@@ -673,7 +842,6 @@
 				3DEB55F52180C68400A00700 /* Assets.xcassets */,
 				3DEB55F72180C68400A00700 /* LaunchScreen.storyboard */,
 				3DEB55FA2180C68400A00700 /* Info.plist */,
-				3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */,
 			);
 			path = TomaThien;
 			sourceTree = "<group>";
@@ -1050,19 +1218,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5471DC2189D54B00A9CFF3 /* UserData.xcdatamodeld in Sources */,
 				3D5471CD2189CF4800A9CFF3 /* SqliteDatabase.swift in Sources */,
 				3D3870B5218D37D5007B7BC3 /* HomeViewCell.swift in Sources */,
+				3DEB9A242197304900F25524 /* UIButtonWithBadge.swift in Sources */,
 				3D5471C52189A5AC00A9CFF3 /* LoginPresenter.swift in Sources */,
+				3DE87B2C2199CE1400CF943F /* TeamDataCache.swift in Sources */,
 				3D3870AD218D303F007B7BC3 /* HomeViewController.swift in Sources */,
 				3D5471EB2189EDF400A9CFF3 /* TextField.swift in Sources */,
+				3DE78F0C2199171800E2B0B6 /* RegistationNotifyDetailInteractor.swift in Sources */,
 				3D3870AB218D2FBD007B7BC3 /* HomeProtocols.swift in Sources */,
 				3D453E23218698B100396F4D /* QRScannerResult.swift in Sources */,
 				3D5471F32189F13000A9CFF3 /* RegisterInteractor.swift in Sources */,
+				3DE87B2E2199CF6900CF943F /* Team.swift in Sources */,
+				3DE78F0521990EFC00E2B0B6 /* RegistationNotifyDetailPresenter.swift in Sources */,
 				3D5471C72189A5C300A9CFF3 /* LoginInteractor.swift in Sources */,
 				3DEB55F12180C68300A00700 /* ViewController.swift in Sources */,
+				3D91C79221988E1C003897CD /* RegistationNotifyDetailRouter.swift in Sources */,
 				3D272EBD218D4B71001C6BFA /* MainViewController.swift in Sources */,
 				3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */,
+				3DACC63A2197FDCA0052673B /* NotificationPresenter.swift in Sources */,
 				3D5CFA1121952979009C4116 /* ShowQRCodeProtocols.swift in Sources */,
 				3D5CFA1B21958AB6009C4116 /* ToastViewController.swift in Sources */,
 				3DEB55EF2180C68300A00700 /* AppDelegate.swift in Sources */,
@@ -1073,8 +1247,13 @@
 				3D953FCA21860F9600976811 /* AppUtility.swift in Sources */,
 				3D953F672185E6DF00976811 /* QRScannerRouter.swift in Sources */,
 				3D953F692185E73700976811 /* QRScannerInteractor.swift in Sources */,
+				3D91C75C219873FC003897CD /* RegistationNotifyDetailProtocols.swift in Sources */,
+				3DACC63E2197FDFE0052673B /* NotificationRouter.swift in Sources */,
 				3DEB56202180CD9F00A00700 /* ServerServices.swift in Sources */,
+				3DACC6312197EC0C0052673B /* NotificationProtocols.swift in Sources */,
 				3DEB56232180CFD500A00700 /* Student.swift in Sources */,
+				3DACC6382197F9690052673B /* NotificationEntity.swift in Sources */,
+				3D91C75E219875AA003897CD /* RegistationNotifyDetailViewController.swift in Sources */,
 				3D272EC5218D4EFB001C6BFA /* DelegateBaseProtocol.swift in Sources */,
 				3D903F7621876803008C02CF /* Extension.swift in Sources */,
 				3D953FCD218612CC00976811 /* QRScannerResultPopupView.swift in Sources */,
@@ -1090,6 +1269,7 @@
 				3D5471F52189F14100A9CFF3 /* RegisterRouter.swift in Sources */,
 				3DEB9A22219715F900F25524 /* UIResponder+Extension.swift in Sources */,
 				3D3870B3218D307E007B7BC3 /* HomeRouter.swift in Sources */,
+				3DE87B302199DE1900CF943F /* TeamListViewController.swift in Sources */,
 				3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */,
 				3D272EC9218D5022001C6BFA /* UIAppDelegate.swift in Sources */,
 				3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */,
@@ -1098,9 +1278,13 @@
 				3D953FC72186063D00976811 /* UIColor+Extension.swift in Sources */,
 				3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */,
 				3D3870B1218D3072007B7BC3 /* HomeInteractor.swift in Sources */,
+				3DACC6352197F2820052673B /* NotificationViewCell.swift in Sources */,
+				3DACC6332197EF3A0052673B /* NotificationViewController.swift in Sources */,
+				3DE78F0A21990FF300E2B0B6 /* UserTypeListViewController.swift in Sources */,
 				3D3870AF218D3059007B7BC3 /* HomePresenter.swift in Sources */,
 				3D272EC7218D4FBC001C6BFA /* DelegateDispatcher.swift in Sources */,
 				3D272EBA218D475E001C6BFA /* HomeCellModel.swift in Sources */,
+				3DACC63C2197FDEE0052673B /* NotificationInteractor.swift in Sources */,
 				3D272ED3218D5D94001C6BFA /* LoginManager.swift in Sources */,
 				3D3D437521895F520077E921 /* StudentDataCache.swift in Sources */,
 				3D5471C92189A5D200A9CFF3 /* LoginRouter.swift in Sources */,
@@ -1439,19 +1623,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3D5471DA2189D54B00A9CFF3 /* UserData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */,
-			);
-			currentVersion = 3D5471DB2189D54B00A9CFF3 /* UserData.xcdatamodel */;
-			path = UserData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3DEB55E32180C68300A00700 /* Project object */;
 }

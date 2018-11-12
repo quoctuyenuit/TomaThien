@@ -15,6 +15,8 @@ private let reuseIdentifier = "Cell"
 class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: HomePresenterProtocol?
     var parentView: UIViewController?
+    var notificationCaches = [NotificationProtocol]()
+    var numberOfNotification = 0
     private let disposeBag = DisposeBag()
     //MARK: - Constant variable
     private let headerHeight: CGFloat = 44
@@ -27,7 +29,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
                 HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
                 HomeCellModel(identify: .report, image: UIImage(named: "ico_report"), title: "Báo cáo"),
-                HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server")
+                HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server"),
             ]
         case .sublead?:
             items = [
@@ -46,7 +48,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         return items
     }()
     private var cellSize: CGSize {
-        let width: CGFloat = UIScreen.main.bounds.width / 3
+        let width: CGFloat = UIScreen.main.bounds.width / 2
         return CGSize(width: width, height: width)
     }
     
@@ -78,11 +80,12 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         return search
     }()
     
-    private lazy var notifyButton: UIButton = {
-        let btn = UIButton()
+    private lazy var notifyButton: UIButtonWithBadge = {
+        let btn = UIButtonWithBadge()
         btn.backgroundColor = .appBase
         guard let icon = UIImage(named: "ico_notify") else { return btn }
-        btn.setImage(icon, for: .normal)
+        btn.icon = icon
+        btn.buttonTapped = HomeViewController.notifyButtonTapped(self)
         return btn
     }()
     private lazy var headerBoundView: UIView = {
@@ -96,6 +99,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         self.setupView()
         self.collectionView.indicatorStyle = .white
         self.getNotification()
+        self.navigationItem.title = "Trang chủ"
     }
     
     private func setupView() {
@@ -172,10 +176,21 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController {
     private func getNotification() {
-        ServerServices.sharedInstance
-            .pullListData(path: "Notification"){ (snapshot) in
-                guard let data = snapshot.value as? [String: Any] else { return }
-                print(data)
-            }
+        ServerServices
+            .sharedInstance
+            .observe(path: ServerReferncePath.notificationRegister.rawValue)
+            { (snapshot) in
+                if let user = NotificationRegistation(snapshot: snapshot) {
+                    self.notificationCaches.append(user)
+                    self.numberOfNotification += 1
+                    self.notifyButton.setBadge(value: self.numberOfNotification)
+                }
+        }
+    }
+}
+
+extension HomeViewController {
+    @objc private func notifyButtonTapped(_ sender: UIButton) {
+        self.presenter?.showNotification(from: self.parentView, listNotification: notificationCaches)
     }
 }

@@ -34,4 +34,9 @@ class HomeRouter: HomeRouterProtocol {
         let scannerViewController = QRScannerRouter.createQRScanner()
         HomeRouter.vc?.present(scannerViewController, animated: false, completion: nil)
     }
+    
+    func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol]) {
+        let notificationViewController = NotificationRouter.createNotificationView(listNotification: listNotification)
+        viewController?.navigationController?.pushViewController(notificationViewController, animated: true)
+    }
 }

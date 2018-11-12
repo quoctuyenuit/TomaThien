@@ -12,6 +12,7 @@ import UIKit
 
 class RegisterViewController: UIViewController, RegisterViewProtocol {
     var presenter: RegisterPresenterProtocol?
+    
     private let textFieldPlacing: CGFloat = 5
     private let logoWidth: CGFloat = 60
     private let padding: CGFloat = 20
@@ -253,16 +254,32 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = "dd/MM/yyyy"
-//        let user = LocalUser(name: "Nguyễn Văn A",
-//                             birthDay: formatter.date(from: "26/06/1997") ?? Date(),
-//                             phoneNumber: "0968329208",
-//                             email: "quoctuyen9aht@gmail.com",
-//                             identify: "184313135",
-//                             school: "ĐH CNTT",
-//                             address: "KTX Khu B",
-//                             yearOfAdmission: 2015,
-//                             yearsOfStudy: 4.5,
-//                             team: 8,
-//                             image: <#T##String#>, userType: <#T##UserType#>, status: <#T##UserStatus#>)
+        let user = LocalUser(name: "Nguyễn Quốc Tuyến",
+                             birthDay: formatter.date(from: "26/06/1997") ?? Date(),
+                             phoneNumber: "0968329208",
+                             email: "quoctuyen9aht@gmail.com",
+                             identify: "184313135",
+                             school: "ĐH Công Nghệ Thông Tin - ĐHQG TP.HCM",
+                             address: "KTX Khu B - ĐHQG TP.HCM",
+                             yearOfAdmission: 2015,
+                             yearsOfStudy: 4.5,
+                             team: 8,
+                             image: UIImage(named: "avatar"),
+                             userType: .admin,
+                             status: .notAuthentic)
+        
+        do {
+            try UserDataCache.sharedInstance.insert(value: user)
+        } catch (_) {
+            try? UserDataCache.sharedInstance.update(id: user.identify, value: user)
+        }
+        
+        ServerServices.sharedInstance.pushData(key: user.key,
+                                               from: ServerReferncePath.notificationRegister,
+                                               value: user.toObject()) { (error, reference) in
+                                                if let error = error {
+                                                    print(error.localizedDescription)
+                                                }
+        }
     }
 }

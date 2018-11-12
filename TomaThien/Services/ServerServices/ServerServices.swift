@@ -14,6 +14,13 @@ import SystemConfiguration
 enum ServerServicesErrors: String, Error {
     case noInternet = "Network is not available"
 }
+enum ServerReferncePath: String {
+    case studentList = "StudentList"
+    case notification = "Notification"
+    case notificationRegister = "Notification/Registation"
+    case registationList = "RegistationList"
+    case teamList = "TeamList"
+}
 
 class ServerServices {
     static public let sharedInstance = ServerServices()
@@ -21,50 +28,50 @@ class ServerServices {
     fileprivate let storageReference = Storage.storage().reference()
     fileprivate let databaseReference = Database.database().reference()
     
-    fileprivate var imageCache = NSCache<NSString, UIImage>()
+    private let queue = DispatchQueue.init(label: "serverservices.firebase",
+                                           qos: .background,
+                                           attributes: .concurrent,
+                                           autoreleaseFrequency: .inherit,
+                                           target: nil)
     
     enum Response<T> {
         case susscess(T)
         case fail(Error)
     }
     
-    init() {
-//        Database.database().isPersistenceEnabled = true
-        Database.database().reference().child("RegistionList").keepSynced(true)
-    }
-    
-    public func pullData(path: String) -> Observable<DataSnapshot> {
-        return Observable.create { (observer) -> Disposable in
-            self.databaseReference.child(path).observe(.value) { (snapshot) in
+    public func pullData(path: ServerReferncePath,
+                         completion: @escaping ([DataSnapshot]) -> ()) {
+        self.queue.async {
+            var listSnapshot = [DataSnapshot]()
+            self.databaseReference.child(path.rawValue).observe(.value) { (snapshot) in
                 for child in snapshot.children {
                     if let snapshot = child as? DataSnapshot {
-                        observer.onNext(snapshot)
+                        listSnapshot.append(snapshot)
                     }
                 }
             }
-            return Disposables.create()
+            completion(listSnapshot)
         }
     }
     
-    public func pullListData(path: String, completion: @escaping (DataSnapshot) -> ()) {
-        self.databaseReference.child(path).observe(.value) { (snapshot) in
-            completion(snapshot)
+    public func pushData(key: String,
+                         from parent: ServerReferncePath,
+                         value: Any,
+                         completion: @escaping (Error?, DatabaseReference?) -> ()) {
+//        if Reachability.isConnectedToNetwork().not {
+//            completion(ServerServicesErrors.noInternet, nil)
+//        }
+        self.queue.async {
+            let path = "\(parent.rawValue)/\(key)"
+            self.databaseReference.child(path).setValue(value, withCompletionBlock: completion)
         }
-    }
-    
-    public func pushData(path: String, value: Any, completion: @escaping (Error?, DatabaseReference?) -> ()) {
-        if Reachability.isConnectedToNetwork().not {
-            completion(ServerServicesErrors.noInternet, nil)
-        }
-        self.databaseReference.child(path).setValue(value, withCompletionBlock: completion)
     }
     
     public func observe(path: String, doSomething: @escaping (DataSnapshot) -> ()) {
-        self.databaseReference.child(path).observe(.childChanged) { (snapshot) in
+        self.databaseReference.child(path).observe(.childAdded) { (snapshot) in
             doSomething(snapshot)
         }
     }
-    
     
     public func pushImage(path: String, image: UIImage) {
         let ref = self.storageReference.child(path)
@@ -79,14 +86,16 @@ class ServerServices {
     }
 
     private func uploadImage(key: String, completion: @escaping (_ resonse: Response<Any>) -> Void) {
-        let storageRef = self.storageReference.child("\(key).png")
-        if let uploadData = UIImage(named: "qrcode")!.pngData() {
-            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                if let error = error {
-                    completion(Response.fail(error))
-                } else {
-                    guard let path = metadata?.path else { return }
-                    completion(Response.susscess(path))
+        self.queue.async {
+            let storageRef = self.storageReference.child("\(key).png")
+            if let uploadData = UIImage(named: "qrcode")!.pngData() {
+                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    if let error = error {
+                        completion(Response.fail(error))
+                    } else {
+                        guard let path = metadata?.path else { return }
+                        completion(Response.susscess(path))
+                    }
                 }
             }
         }

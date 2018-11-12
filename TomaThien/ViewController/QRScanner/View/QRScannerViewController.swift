@@ -273,8 +273,11 @@ extension QRScannerViewController {
         formatted.dateFormat = "yyyyMMdd"
         
         dictionary.forEach { (key, value) in
-            let path = "RegistionList/\(formatted.string(from: date))/\(key)"
-            ServerServices.sharedInstance.pushData(path: path, value: value, completion: { (error, reference) in
+//            let path = "\(ServerReferncePath.registationList.rawValue)/\(formatted.string(from: date))/\(key)"
+            let key = "\(formatted.string(from: date))/\(key)"
+            ServerServices.sharedInstance.pushData(key: key,
+                                                   from: ServerReferncePath.registationList,
+                                                   value: value, completion: { (error, reference) in
                 if let error = error {
                     print("Cannot push data with \(error.localizedDescription)")
                 }

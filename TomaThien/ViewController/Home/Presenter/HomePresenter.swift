@@ -17,4 +17,8 @@ class HomePresenter: HomePresenterProtocol {
     func showQRScanner() {
         self.router?.showQRScanner()
     }
+    
+    func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol]) {
+        self.router?.showNotification(from: viewController, listNotification: listNotification)
+    }
 }

@@ -10,6 +10,18 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
+public enum UserType: Int {
+    case member = 1
+    case sublead = 2
+    case admin = 3
+    
+    static var allCases: [UserType] = [
+        .member,
+        .sublead,
+        .admin
+    ]
+}
+
 public class Student {
     public var ref: DatabaseReference?
     var name: String
@@ -23,12 +35,18 @@ public class Student {
     var team: Int
     var identify: String
     var imageUrl: String //Link download
+    var userType: UserType
     
     public var key: String {
         return self.identify.lowercased()
     }
     
-    public init(name: String, birthDay: Date, phoneNumber: String, email: String, identify: String, school: String, address: String, yearOfAdmission: Int, yearsOfStudy: Float, team: Int, imageUrl: String) {
+    public init(name: String, birthDay: Date,
+                phoneNumber: String, email: String,
+                identify: String, school: String,
+                address: String, yearOfAdmission: Int,
+                yearsOfStudy: Float, team: Int,
+                imageUrl: String, userType: UserType = .member) {
         self.name = name
         self.birthDay = birthDay
         self.phoneNumber = phoneNumber
@@ -40,9 +58,10 @@ public class Student {
         self.yearsOfStudy = yearsOfStudy
         self.team = team
         self.imageUrl = imageUrl
+        self.userType = userType
     }
     
-    convenience init?(snapshot: DataSnapshot) {
+    init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"] as? String,
@@ -55,7 +74,9 @@ public class Student {
             let yearOfAdmission = value["yearOfAdmission"] as? Int,
             let yearsOfStudy = value["yearsOfStudy"] as? Float,
             let team = value["team"] as? Int,
-            let imageUrl = value["image"] as? String
+            let imageUrl = value["imageUrl"] as? String,
+            let userTypeRawValue = value["userType"] as? Int,
+            let userType = UserType(rawValue: userTypeRawValue)
             else {
                 return nil
         }
@@ -64,17 +85,18 @@ public class Student {
         dateFormatted.dateFormat = "dd/MM/yyyy"
         guard let birthDay = dateFormatted.date(from: birthDayString) else { return nil }
         
-        self.init(name: name,
-                  birthDay: birthDay,
-                  phoneNumber: phoneNumber,
-                  email: email,
-                  identify: identify,
-                  school: school,
-                  address: address,
-                  yearOfAdmission: yearOfAdmission,
-                  yearsOfStudy: yearsOfStudy,
-                  team: team,
-                  imageUrl: imageUrl)
+        self.name = name
+        self.birthDay = birthDay
+        self.phoneNumber = phoneNumber
+        self.email = email
+        self.identify = identify
+        self.school = school
+        self.address = address
+        self.yearOfAdmission = yearOfAdmission
+        self.yearsOfStudy = yearsOfStudy
+        self.team = team
+        self.imageUrl = imageUrl
+        self.userType = userType
         
         self.ref = snapshot.ref
     }
@@ -94,7 +116,8 @@ public class Student {
             "yearOfAdmission": self.yearOfAdmission,
             "yearsOfStudy": self.yearsOfStudy,
             "team": self.team,
-            "imageUrl": self.imageUrl
+            "imageUrl": self.imageUrl,
+            "userType": self.userType.rawValue
         ]
     }
 }
