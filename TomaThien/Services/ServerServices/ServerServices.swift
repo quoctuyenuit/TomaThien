@@ -42,15 +42,16 @@ class ServerServices {
     public func pullData(path: ServerReferncePath,
                          completion: @escaping ([DataSnapshot]) -> ()) {
         self.queue.async {
-            var listSnapshot = [DataSnapshot]()
             self.databaseReference.child(path.rawValue).observe(.value) { (snapshot) in
+                var listSnapshot = [DataSnapshot]()
                 for child in snapshot.children {
                     if let snapshot = child as? DataSnapshot {
                         listSnapshot.append(snapshot)
                     }
                 }
+                completion(listSnapshot)
             }
-            completion(listSnapshot)
+            
         }
     }
     

@@ -63,12 +63,21 @@ class TeamDataCache: SqliteDatabase {
         return team
     }
     
-    public func selectAll() -> [Team] {
+    public func selectAll(completion: @escaping ([Team]) -> ()) {
         var teams = [Team]()
         try? self.database.prepare(self.table).forEach({ (row) in
             teams.append(Team(id: row[self.id], name: row[name]))
         })
-        return teams
+        
+        //If cache have data
+        if teams.count  > 0 {
+            completion(teams)
+        } else {
+            //if cache is empty -> pull from server
+            self.updateData(completion: completion)
+        }
+        
+        
     }
     
     public func count() throws -> Int {
@@ -77,7 +86,8 @@ class TeamDataCache: SqliteDatabase {
 }
 
 extension TeamDataCache {
-    public func updateData() {
+    public func updateData(completion: (([Team]) -> ())?) {
+        var teams = [Team]()
         ServerServices
             .sharedInstance.pullData(path: ServerReferncePath.teamList) { listSnapshot in
                 listSnapshot.forEach({ (snapshot) in
@@ -87,7 +97,9 @@ extension TeamDataCache {
                             print("get teams from server failt")
                             return
                     }
+                    teams.append(team)
                 })
+                completion?(teams)
         }
     }
 }

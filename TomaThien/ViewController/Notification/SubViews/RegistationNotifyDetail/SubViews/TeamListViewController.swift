@@ -14,7 +14,7 @@ protocol TeamListDelegate {
 }
 class TeamListViewController: UIViewController {
     //MARK: - Constant properties
-    private let listItems = TeamDataCache.sharedInstance.selectAll()
+    private var listItems: [Team] = [Team]()
     private let reuseIdentifier = "TeamListIdentifier"
     var delegate: TeamListDelegate?
     private var selectedItem: Team?
@@ -30,6 +30,10 @@ class TeamListViewController: UIViewController {
     convenience init(currentTeam: Team) {
         self.init(nibName: nil, bundle: nil)
         self.selectedItem = currentTeam
+        TeamDataCache.sharedInstance.selectAll { (teams) in
+            self.listItems = teams
+            self.tableView.reloadData()
+        }
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
