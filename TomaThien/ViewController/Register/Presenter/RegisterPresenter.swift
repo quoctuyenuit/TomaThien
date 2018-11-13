@@ -9,11 +9,11 @@
 import Foundation
 
 class RegisterPresenter: RegisterPresenterProtocol {
-    func register(user: LocalUser) {
-        
-    }
-    
     var view: RegisterViewProtocol?
     var interactor: RegisterInteractorProtocol?
     var router: RegisterRouterProtocol?
+    
+    func register(user: LocalUser) {
+        self.interactor?.register(user: user)
+    }
 }

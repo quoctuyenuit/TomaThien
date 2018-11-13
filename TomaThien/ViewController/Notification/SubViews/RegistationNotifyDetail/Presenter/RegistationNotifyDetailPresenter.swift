@@ -15,7 +15,7 @@ class RegistationNotifyDetailPresenter: RegistationNotifyDetailPresenterProtocol
     var router: RegistationNotifyDetailRouterProtocol?
     
     func confirmRegistation(user: LocalUser) {
-        
+        self.interactor?.confirmRegistation(user: user)
     }
     
     func showUserTypeList(from viewController: UIViewController, currentUserType: UserType) {

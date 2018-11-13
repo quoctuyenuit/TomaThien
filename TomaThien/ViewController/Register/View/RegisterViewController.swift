@@ -263,23 +263,11 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
                              address: "KTX Khu B - ĐHQG TP.HCM",
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4.5,
-                             team: 8,
+                             team: Team(id: 8),
                              image: UIImage(named: "avatar"),
                              userType: .admin,
                              status: .notAuthentic)
         
-        do {
-            try UserDataCache.sharedInstance.insert(value: user)
-        } catch (_) {
-            try? UserDataCache.sharedInstance.update(id: user.identify, value: user)
-        }
-        
-        ServerServices.sharedInstance.pushData(key: user.key,
-                                               from: ServerReferncePath.notificationRegister,
-                                               value: user.toObject()) { (error, reference) in
-                                                if let error = error {
-                                                    print(error.localizedDescription)
-                                                }
-        }
+        self.presenter?.register(user: user)
     }
 }

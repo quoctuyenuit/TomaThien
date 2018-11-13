@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct Team {
+public struct Team {
     var id: Int
     var name: String
     init(id: Int, name: String) {
@@ -41,7 +41,7 @@ struct Team {
 }
 
 extension Team: Equatable {
-    static func == (lhs: Team, rhs: Team) -> Bool {
+    public static func == (lhs: Team, rhs: Team) -> Bool {
         return lhs.id == rhs.id
     }
 }

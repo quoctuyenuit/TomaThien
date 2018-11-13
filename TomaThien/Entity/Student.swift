@@ -23,7 +23,6 @@ public enum UserType: Int {
 }
 
 public class Student {
-    public var ref: DatabaseReference?
     var name: String
     var birthDay: Date
     var phoneNumber: String
@@ -32,7 +31,7 @@ public class Student {
     var address: String
     var yearOfAdmission: Int
     var yearsOfStudy: Float
-    var team: Int
+    var team: Team
     var identify: String
     var imageUrl: String //Link download
     var userType: UserType
@@ -45,7 +44,7 @@ public class Student {
                 phoneNumber: String, email: String,
                 identify: String, school: String,
                 address: String, yearOfAdmission: Int,
-                yearsOfStudy: Float, team: Int,
+                yearsOfStudy: Float, team: Team,
                 imageUrl: String, userType: UserType = .member) {
         self.name = name
         self.birthDay = birthDay
@@ -73,7 +72,7 @@ public class Student {
             let address = value["address"] as? String,
             let yearOfAdmission = value["yearOfAdmission"] as? Int,
             let yearsOfStudy = value["yearsOfStudy"] as? Float,
-            let team = value["team"] as? Int,
+            let teamId = value["team"] as? Int,
             let imageUrl = value["imageUrl"] as? String,
             let userTypeRawValue = value["userType"] as? Int,
             let userType = UserType(rawValue: userTypeRawValue)
@@ -94,11 +93,9 @@ public class Student {
         self.address = address
         self.yearOfAdmission = yearOfAdmission
         self.yearsOfStudy = yearsOfStudy
-        self.team = team
+        self.team = TeamDataCache.sharedInstance.select(id: teamId) ?? Team(id: teamId)
         self.imageUrl = imageUrl
         self.userType = userType
-        
-        self.ref = snapshot.ref
     }
     
     func toObject() -> Any {
@@ -115,7 +112,7 @@ public class Student {
             "address": self.address,
             "yearOfAdmission": self.yearOfAdmission,
             "yearsOfStudy": self.yearsOfStudy,
-            "team": self.team,
+            "team": self.team.id,
             "imageUrl": self.imageUrl,
             "userType": self.userType.rawValue
         ]

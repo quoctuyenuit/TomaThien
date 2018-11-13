@@ -7,11 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 class LoginPresenter: LoginPresenterProtocol {
-    func login(userName: String, password: String) {
-        
-    }
+    
     
     var view: LoginViewProtocol?
     
@@ -19,5 +18,11 @@ class LoginPresenter: LoginPresenterProtocol {
     
     var router: LoginRouterProtocol?
     
+    func login(userName: String, password: String) {
+        
+    }
     
+    func showRegisterView(from viewController: UIViewController) {
+        self.router?.showRegisterView(from: viewController)
+    }
 }

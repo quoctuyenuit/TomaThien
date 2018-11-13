@@ -10,6 +10,18 @@ import Foundation
 
 class RegistationNotifyDetailInteractor: RegistationNotifyDetailInteractorProtocol {
     func confirmRegistation(user: LocalUser) {
-        
+//        guard let image = user.image else { return }
+//        ServerServices.sharedInstance.pushImage(path: user.key, image: image) { (error, path) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//                return
+//            }
+//            
+//            guard let path = path else { return }
+//            user.imageUrl = path
+//            ServerServices.sharedInstance.pushData(key: user.key,
+//                                                   from: ServerReferncePath.studentList,
+//                                                   value: user.toObject()) { (_, _) in }
+//        }
     }
 }

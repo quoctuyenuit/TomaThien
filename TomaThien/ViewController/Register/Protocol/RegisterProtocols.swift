@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol RegisterViewProtocol {
     var presenter: RegisterPresenterProtocol? { get set }
@@ -26,5 +27,5 @@ protocol RegisterInteractorProtocol {
 }
 
 protocol RegisterRouterProtocol {
-    
+    static func createRegisterViewController() -> UIViewController
 }

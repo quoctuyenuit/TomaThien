@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = LoginRouter.createLoginViewController()
+        window?.makeKeyAndVisible()
+        
         return true
     }
     

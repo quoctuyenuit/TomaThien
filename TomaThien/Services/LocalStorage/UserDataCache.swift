@@ -70,7 +70,7 @@ class UserDataCache: SqliteDatabase {
                                            address <- value.address,
                                            yearOfAdmission <- value.yearOfAdmission,
                                            yearsOfStudy <- "\(value.yearsOfStudy)",
-                                           team <- value.team,
+                                           team <- value.team.id,
                                            image <- value.image?.jpeg(quality: .medium),
                                            userType <- value.userType.rawValue,
                                            status <- value.status == .authentic ? true : false)
@@ -80,7 +80,6 @@ class UserDataCache: SqliteDatabase {
     
     public func update(id: String, value: LocalUser) throws {
         let student = self.userTable.filter(self.identify == id)
-        let imageData = value.image?.jpeg(quality: .medium)
         try self.database.run(student.update(name <- value.name,
                                              birthDay <- value.birthDay,
                                              phoneNumber <- value.phoneNumber,
@@ -89,8 +88,8 @@ class UserDataCache: SqliteDatabase {
                                              address <- value.address,
                                              yearOfAdmission <- value.yearOfAdmission,
                                              yearsOfStudy <- "\(value.yearsOfStudy)",
-                                             team <- value.team,
-                                             image <- imageData,
+                                             team <- value.team.id,
+                                             image <- value.image?.jpeg(quality: .medium),
                                              userType <- value.userType.rawValue,
                                              status <- value.status == .authentic ? true : false))
         print("update user successful")
@@ -103,6 +102,7 @@ class UserDataCache: SqliteDatabase {
         try? self.database.prepare(element).forEach({ (row) in
             
             let img = UIImage(data: row[image] ?? Data())
+            let team = TeamDataCache.sharedInstance.select(id: row[self.team]) ?? Team(id: row[self.team])
             user = LocalUser(name: row[name] ,
                              birthDay: row[birthDay] ,
                              phoneNumber: row[phoneNumber] ,
@@ -112,7 +112,7 @@ class UserDataCache: SqliteDatabase {
                              address: row[address] ,
                              yearOfAdmission: row[yearOfAdmission] ,
                              yearsOfStudy: Float.init(row[yearsOfStudy] ) ?? 0,
-                             team: row[team] ,
+                             team:  team,
                              image: img ?? UIImage(),
                              userType: UserType(rawValue: row[userType]) ?? .member,
                              status: (row[status]) ? .authentic : .notAuthentic)

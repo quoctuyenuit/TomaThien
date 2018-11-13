@@ -29,7 +29,7 @@ class LocalUser: Student {
         address: String,
         yearOfAdmission: Int,
         yearsOfStudy: Float,
-        team: Int,
+        team: Team,
         image: UIImage?,
         userType: UserType,
         status: UserStatus = .notAuthentic) {
@@ -68,7 +68,7 @@ class LocalUser: Student {
             "address": self.address,
             "yearOfAdmission": self.yearOfAdmission,
             "yearsOfStudy": self.yearsOfStudy,
-            "team": self.team,
+            "team": self.team.id,
             "imageUrl": self.imageUrl,
             "userType": self.userType.rawValue,
             "time": dateFormatted.string(from: Date())

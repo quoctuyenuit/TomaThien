@@ -84,5 +84,6 @@ extension NotificationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let notify = self.notifications[indexPath.row]
         notify.showDetail(from: self)
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }

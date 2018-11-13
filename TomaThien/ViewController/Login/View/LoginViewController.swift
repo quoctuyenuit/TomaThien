@@ -231,6 +231,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         super.viewDidLoad()
         self.setupView()
         self.setupEvent()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func setupEvent() {
@@ -300,15 +301,12 @@ class LoginViewController: UIViewController, LoginViewProtocol {
                              address: "",
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4,
-                             team: 8,
+                             team: Team(id: 8),
                              image: UIImage(),
                              userType: .admin,
                              status: .authentic)
         LoginManager.sharedInstance.user = user
         UIAppDelegate.shareInstance.showMainViewController(user: user)
-//        let testView = UIViewController()
-//        testView.view.backgroundColor = .green
-//        self.navigationController?.pushViewController(testView, animated: true)
     }
 
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
@@ -316,7 +314,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     }
     
     @objc private func registerTapped(_ sender: UIButton) {
-        
+        self.presenter?.showRegisterView(from: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -58,6 +58,7 @@ class RegistationNotifyDetailViewController: UIViewController, RegistationNotify
         btn.setTitle("Xác nhận", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 4
+        btn.addTarget(self, action: #selector(confirmTapped(_:)), for: .touchUpInside)
         return btn
     }()
     private lazy var headerLine: UIView = {
@@ -104,8 +105,10 @@ class RegistationNotifyDetailViewController: UIViewController, RegistationNotify
         self.itemsList.append(RegistationItem(label: "Địa chỉ:", title: user.address))
         self.itemsList.append(RegistationItem(label: "Năm nhập học:", title: "\(user.yearOfAdmission)"))
         self.itemsList.append(RegistationItem(label: "Số năm học:", title: "\(user.yearsOfStudy)"))
-        self.itemsList.append(RegistationItem(label: "Nhóm:", title: "\(user.team)"))
+        self.itemsList.append(RegistationItem(label: "Nhóm:", title: "\(user.team.name)"))
         self.itemsList.append(RegistationItem(label: "Loại tài khoản:", title: String(describing: user.userType)))
+        
+        self.avatar.pin_setImage(from: URL(string: user.imageUrl))
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -187,6 +190,11 @@ class RegistationNotifyDetailViewController: UIViewController, RegistationNotify
         self.setupView()
         self.navigationItem.title = "Yêu cầu đăng ký"
     }
+    
+    @objc private func confirmTapped(_ sender: UIButton) {
+        guard let user = self.user else { return }
+        self.presenter?.confirmRegistation(user: user)
+    }
 }
 
 extension RegistationNotifyDetailViewController: UITableViewDelegate {
@@ -197,7 +205,7 @@ extension RegistationNotifyDetailViewController: UITableViewDelegate {
             if model.label == "Loại tài khoản:"  {
                 self.presenter?.showUserTypeList(from: self, currentUserType: currentUser.userType)
             } else if model.label == "Nhóm:" {
-                let team = TeamDataCache.sharedInstance.select(id: currentUser.team) ?? Team(id: currentUser.team)
+                let team = currentUser.team
                 self.presenter?.showTeamList(from: self, currentTeam: team)
             }
         }
@@ -234,7 +242,9 @@ extension RegistationNotifyDetailViewController: UserTypeListDelegate {
 }
 
 extension RegistationNotifyDetailViewController: TeamListDelegate {
-    func didSelected(userType: Team) {
-        
+    func didSelected(userTeam: Team) {
+        self.user?.team = userTeam
+        self.updateView(user: user!)
+        self.tableView.reloadData()
     }
 }

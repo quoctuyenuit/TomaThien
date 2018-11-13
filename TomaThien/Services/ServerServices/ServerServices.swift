@@ -20,6 +20,7 @@ enum ServerReferncePath: String {
     case notificationRegister = "Notification/Registation"
     case registationList = "RegistationList"
     case teamList = "TeamList"
+    case notifyImage = "UserImage"
 }
 
 class ServerServices {
@@ -39,10 +40,15 @@ class ServerServices {
         case fail(Error)
     }
     
+    init() {
+        self.databaseReference.child(ServerReferncePath.notification.rawValue).keepSynced(true)
+    }
+    
     public func pullData(path: ServerReferncePath,
+                         type: DataEventType = .value,
                          completion: @escaping ([DataSnapshot]) -> ()) {
         self.queue.async {
-            self.databaseReference.child(path.rawValue).observe(.value) { (snapshot) in
+            self.databaseReference.child(path.rawValue).observe(type) { (snapshot) in
                 var listSnapshot = [DataSnapshot]()
                 for child in snapshot.children {
                     if let snapshot = child as? DataSnapshot {
@@ -74,32 +80,42 @@ class ServerServices {
         }
     }
     
-    public func pushImage(path: String, image: UIImage) {
-        let ref = self.storageReference.child(path)
-        self.uploadImage(key: ref.name) { (reponse) in
+    public func pushImage(key: String,
+                          from parent: ServerReferncePath,
+                          image: UIImage, completion: ((Error?, String?) -> ())?) {
+        self.uploadImage(key: key, from: parent.rawValue, image: image) { (reponse) in
             switch reponse {
-            case .susscess(_):
-                print("Image was uploaded")
+            case .susscess(let path):
+                completion?(nil, path as? String)
             case .fail(let error):
-                print("Upload image was fail with \(error)")
+                completion?(error, nil)
             }
         }
     }
 
-    private func uploadImage(key: String, completion: @escaping (_ resonse: Response<Any>) -> Void) {
-        self.queue.async {
-            let storageRef = self.storageReference.child("\(key).png")
-            if let uploadData = UIImage(named: "qrcode")!.pngData() {
+    private func uploadImage(key: String,
+                             from parent: String,
+                             image: UIImage,
+                             completion: @escaping (_ resonse: Response<Any>) -> Void) {
+//        self.queue.async {
+            let storageRef = self.storageReference.child(parent).child("\(key).png")
+            if let uploadData = image.pngData() {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if let error = error {
                         completion(Response.fail(error))
                     } else {
-                        guard let path = metadata?.path else { return }
-                        completion(Response.susscess(path))
+                        storageRef.downloadURL(completion: { (url, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                return
+                            }
+                            completion(Response.susscess(url?.absoluteString ?? ""))
+                        })
+                        
                     }
                 }
             }
-        }
+//        }
     }
 //
 //    func downloadImage(key: String, completion: @escaping (_ image: UIImage) -> ()) {
