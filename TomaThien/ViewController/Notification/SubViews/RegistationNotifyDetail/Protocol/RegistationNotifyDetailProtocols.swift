@@ -20,13 +20,13 @@ protocol RegistationNotifyDetailPresenterProtocol {
     //MARK: - View -> Presenter
     func showUserTypeList(from viewController: UIViewController, currentUserType: UserType)
     func showTeamList(from viewController: UIViewController, currentTeam: Team)
-    func confirmRegistation(user: LocalUser)
+    func confirmRegistation(user: User)
 }
 protocol RegistationNotifyDetailInteractorProtocol {
-    func confirmRegistation(user: LocalUser)
+    func confirmRegistation(user: User)
 }
 protocol RegistationNotifyDetailRouterProtocol {
-    static func createRegistationNotifyDetail(user: LocalUser) -> UIViewController
+    static func createRegistationNotifyDetail(user: User) -> UIViewController
     func showUserTypeList(from viewController: UIViewController, currentUserType: UserType)
     func showTeamList(from viewController: UIViewController, currentTeam: Team)
 }

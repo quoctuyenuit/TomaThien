@@ -95,7 +95,7 @@ extension TabBarViewController {
         return item;
     }
     
-    func configure(user: LocalUser) -> [UIViewController] {
+    func configure(user: User) -> [UIViewController] {
         if let home =  HomeRouter.createHomeViewController() as? HomeViewController {
             home.parentView = self
             home.tabBarItem = self.createBarItem(with: .home)

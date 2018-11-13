@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class RegistationNotifyDetailRouter: RegistationNotifyDetailRouterProtocol {
-    class func createRegistationNotifyDetail(user: LocalUser) -> UIViewController {
+    class func createRegistationNotifyDetail(user: User) -> UIViewController {
         
         let view = RegistationNotifyDetailViewController(user: user)
         let presenter = RegistationNotifyDetailPresenter()

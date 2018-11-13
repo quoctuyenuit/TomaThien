@@ -11,7 +11,7 @@ import UIKit
 
 
 extension UIAppDelegate {
-    public func showMainViewController(user: LocalUser) {
+    public func showMainViewController(user: User) {
         let tabviewController = TabBarViewController()
         let navigationController = UINavigationController(rootViewController: tabviewController)
         self.window?.rootViewController = navigationController

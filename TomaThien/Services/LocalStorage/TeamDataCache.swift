@@ -47,7 +47,7 @@ class TeamDataCache: SqliteDatabase {
                                                value: value.toObject()) { _,_  in }
     }
     
-    public func update(id: Int, value: LocalUser) throws {
+    public func update(id: Int, value: User) throws {
         let team = self.table.filter(self.id == id)
         try self.database.run(team.update(name <- value.name))
         print("update user successful")

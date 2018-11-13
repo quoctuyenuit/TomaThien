@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 class RegisterInteractor: RegisterInteractorProtocol {
-    func register(user: LocalUser) {
+    func register(user: User, userImage: UIImage) {
         self.storeCache(user: user)
         self.pushNotifyData(user: user)
-        self.pushUserImage(image: user.image, key: user.key)
+        self.pushUserImage(image: userImage, key: user.key)
     }
     
-    private func storeCache(user: LocalUser) {
+    private func storeCache(user: User) {
         do {
             try UserDataCache.sharedInstance.insert(value: user)
         } catch (_) {
@@ -24,7 +24,7 @@ class RegisterInteractor: RegisterInteractorProtocol {
         }
     }
     
-    private func pushNotifyData(user: LocalUser) {
+    private func pushNotifyData(user: User) {
         ServerServices.sharedInstance.pushData(key: user.key,
                                                from: ServerReferncePath.notificationRegister,
                                                value: user.toObject()) { (error, reference) in

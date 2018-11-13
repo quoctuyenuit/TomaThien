@@ -32,7 +32,7 @@ class RegistationNotifyDetailViewController: UIViewController, RegistationNotify
     private let itemHeight: CGFloat = 44
     private let itemCount: CGFloat = 11
     private let reuseIdentifier = "RegistationNotify"
-    private var user: LocalUser?
+    private var user: User?
     private var itemsList: [RegistationItem] = []
     //MARK: - View properties
     private lazy var headerBound: UIView = {
@@ -85,13 +85,13 @@ class RegistationNotifyDetailViewController: UIViewController, RegistationNotify
         return imageView
     }()
     
-    convenience init(user: LocalUser) {
+    convenience init(user: User) {
         self.init(nibName: nil, bundle: nil)
         self.user = user
         self.updateView(user: user)
     }
     
-    private func updateView(user: LocalUser) {
+    private func updateView(user: User) {
         self.itemsList.removeAll()
         let formatter = DateFormatter()
         formatter.dateStyle = .short

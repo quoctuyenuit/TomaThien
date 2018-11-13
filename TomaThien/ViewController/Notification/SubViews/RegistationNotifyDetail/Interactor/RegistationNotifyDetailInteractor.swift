@@ -9,7 +9,7 @@
 import Foundation
 
 class RegistationNotifyDetailInteractor: RegistationNotifyDetailInteractorProtocol {
-    func confirmRegistation(user: LocalUser) {
+    func confirmRegistation(user: User) {
 //        guard let image = user.image else { return }
 //        ServerServices.sharedInstance.pushImage(path: user.key, image: image) { (error, path) in
 //            if let error = error {

@@ -16,7 +16,7 @@ class QRCodePresenter: QRCodePresenterProtocol {
     
     var router: QRCodeRouterProtocol?
     
-    func createQRData(from userInfo: LocalUser) {
+    func createQRData(from userInfo: User) {
         self.interactor?.createQRData(from: userInfo, completion: { (data) in
             let string = String(data: data, encoding: String.Encoding.utf8)
             guard let qrData = string?.data(using: String.Encoding.utf8) else {

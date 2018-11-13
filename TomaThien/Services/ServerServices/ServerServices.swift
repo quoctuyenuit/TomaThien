@@ -74,12 +74,6 @@ class ServerServices {
         }
     }
     
-    public func observe(path: String, doSomething: @escaping (DataSnapshot) -> ()) {
-        self.databaseReference.child(path).observe(.childAdded) { (snapshot) in
-            doSomething(snapshot)
-        }
-    }
-    
     public func pushImage(key: String,
                           from parent: ServerReferncePath,
                           image: UIImage, completion: ((Error?, String?) -> ())?) {

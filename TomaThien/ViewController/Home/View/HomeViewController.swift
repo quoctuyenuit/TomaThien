@@ -178,14 +178,16 @@ extension HomeViewController {
     private func getNotification() {
         ServerServices
             .sharedInstance
-            .observe(path: ServerReferncePath.notificationRegister.rawValue)
-            { (snapshot) in
-                if let user = NotificationRegistation(snapshot: snapshot) {
-                    self.notificationCaches.append(user)
-                    self.numberOfNotification += 1
-                    self.notifyButton.setBadge(value: self.numberOfNotification)
-                }
-        }
+            .pullData(path: ServerReferncePath.notificationRegister,
+                      completion: { (listSnapshot) in
+                        listSnapshot.forEach({ (snapshot) in
+                            if let user = NotificationRegistation(snapshot: snapshot) {
+                                self.notificationCaches.append(user)
+                                self.numberOfNotification += 1
+                                self.notifyButton.setBadge(value: self.numberOfNotification)
+                            }
+                        })
+            })
     }
 }
 

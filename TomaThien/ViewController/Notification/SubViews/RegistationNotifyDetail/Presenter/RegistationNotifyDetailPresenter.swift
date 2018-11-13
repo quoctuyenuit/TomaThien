@@ -14,7 +14,7 @@ class RegistationNotifyDetailPresenter: RegistationNotifyDetailPresenterProtocol
     var interactor: RegistationNotifyDetailInteractorProtocol?
     var router: RegistationNotifyDetailRouterProtocol?
     
-    func confirmRegistation(user: LocalUser) {
+    func confirmRegistation(user: User) {
         self.interactor?.confirmRegistation(user: user)
     }
     

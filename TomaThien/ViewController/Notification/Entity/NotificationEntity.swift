@@ -23,12 +23,12 @@ struct NotificationRegistation: NotificationProtocol {
     
     var notiIcon: UIImage?
     
-    var user: LocalUser
+    var user: User
     
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            let user = LocalUser(snapshot: snapshot),
+            let user = User(snapshot: snapshot),
             let time = value["time"] as? String
             else {
                 return nil

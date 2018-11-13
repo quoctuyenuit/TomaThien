@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class RegisterPresenter: RegisterPresenterProtocol {
     var view: RegisterViewProtocol?
     var interactor: RegisterInteractorProtocol?
     var router: RegisterRouterProtocol?
     
-    func register(user: LocalUser) {
-        self.interactor?.register(user: user)
+    func register(user: User, userImage: UIImage) {
+        self.interactor?.register(user: user, userImage: userImage)
     }
 }

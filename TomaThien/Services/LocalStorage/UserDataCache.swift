@@ -23,9 +23,9 @@ class UserDataCache: SqliteDatabase {
     private let yearOfAdmission = Expression<Int>("yearOfAdmission")
     private let yearsOfStudy = Expression<String>("yearsOfStudy")
     private let team = Expression<Int>("team")
-    private let image = Expression<Data?>("image")
     private let userType = Expression<Int>("userType")
     private let status = Expression<Bool>("status")
+    private let imageUrl = Expression<String>("imageUrl")
     
     public static let sharedInstance = UserDataCache()
     
@@ -50,7 +50,7 @@ class UserDataCache: SqliteDatabase {
                 t.column(yearOfAdmission)
                 t.column(yearsOfStudy)
                 t.column(team)
-                t.column(image)
+                t.column(imageUrl)
                 t.column(userType)
                 t.column(status)
             })
@@ -60,7 +60,7 @@ class UserDataCache: SqliteDatabase {
         }
     }
     
-    public func insert(value: LocalUser) throws {
+    public func insert(value: User) throws {
         let insert = self.userTable.insert(identify <- value.identify.encodeId(),
                                            name <- value.name,
                                            birthDay <- value.birthDay,
@@ -71,14 +71,14 @@ class UserDataCache: SqliteDatabase {
                                            yearOfAdmission <- value.yearOfAdmission,
                                            yearsOfStudy <- "\(value.yearsOfStudy)",
                                            team <- value.team.id,
-                                           image <- value.image?.jpeg(quality: .medium),
+                                           imageUrl <- value.imageUrl,
                                            userType <- value.userType.rawValue,
                                            status <- value.status == .authentic ? true : false)
         try self.database.run(insert)
         print("insert successful value = \(value)")
     }
     
-    public func update(id: String, value: LocalUser) throws {
+    public func update(id: String, value: User) throws {
         let student = self.userTable.filter(self.identify == id)
         try self.database.run(student.update(name <- value.name,
                                              birthDay <- value.birthDay,
@@ -89,33 +89,32 @@ class UserDataCache: SqliteDatabase {
                                              yearOfAdmission <- value.yearOfAdmission,
                                              yearsOfStudy <- "\(value.yearsOfStudy)",
                                              team <- value.team.id,
-                                             image <- value.image?.jpeg(quality: .medium),
+                                             imageUrl <- value.imageUrl,
                                              userType <- value.userType.rawValue,
                                              status <- value.status == .authentic ? true : false))
         print("update user successful")
     }
     
-    public func select(id: String) -> LocalUser? {
+    public func select(id: String) -> User? {
         let element = self.userTable.filter(self.identify == id)
-        var user: LocalUser?
+        var user: User?
         
         try? self.database.prepare(element).forEach({ (row) in
             
-            let img = UIImage(data: row[image] ?? Data())
             let team = TeamDataCache.sharedInstance.select(id: row[self.team]) ?? Team(id: row[self.team])
-            user = LocalUser(name: row[name] ,
+            user = User(name: row[name],
                              birthDay: row[birthDay] ,
-                             phoneNumber: row[phoneNumber] ,
-                             email: row[email] ,
+                             phoneNumber: row[phoneNumber],
+                             email: row[email],
                              identify: row[identify] ,
-                             school: row[school] ,
-                             address: row[address] ,
+                             school: row[school],
+                             address: row[address],
                              yearOfAdmission: row[yearOfAdmission] ,
                              yearsOfStudy: Float.init(row[yearsOfStudy] ) ?? 0,
-                             team:  team,
-                             image: img ?? UIImage(),
+                             team: team,
+                             imageUrl: row[imageUrl],
                              userType: UserType(rawValue: row[userType]) ?? .member,
-                             status: (row[status]) ? .authentic : .notAuthentic)
+                             status: row[status] ? .authentic : .notAuthentic)
         })
         return user
     }

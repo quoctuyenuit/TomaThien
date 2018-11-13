@@ -18,10 +18,10 @@ protocol QRCodePresenterProtocol {
     var interactor: QRCodeInteractorProtocol? { get set }
     var router: QRCodeRouterProtocol? { get set }
     
-    func createQRData(from userInfo: LocalUser)
+    func createQRData(from userInfo: User)
 }
 protocol QRCodeInteractorProtocol {
-    func createQRData(from userInfo: LocalUser, completion: @escaping (Data) -> ())
+    func createQRData(from userInfo: User, completion: @escaping (Data) -> ())
 }
 protocol QRCodeRouterProtocol {
     static func createQRCodeViewController() -> UIViewController

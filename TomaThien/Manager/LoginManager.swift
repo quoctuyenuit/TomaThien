@@ -10,5 +10,5 @@ import Foundation
 
 class LoginManager {
     static let sharedInstance = LoginManager()
-    var user: LocalUser?
+    var user: User?
 }

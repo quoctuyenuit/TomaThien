@@ -9,7 +9,7 @@
 import Foundation
 
 class QRCodeInteractor: QRCodeInteractorProtocol {
-    func createQRData(from userInfo: LocalUser, completion: @escaping (Data) -> ()) {
+    func createQRData(from userInfo: User, completion: @escaping (Data) -> ()) {
         let id = userInfo.identify
         let name = userInfo.name
         let team = userInfo.team

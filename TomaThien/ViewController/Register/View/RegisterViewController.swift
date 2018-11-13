@@ -254,7 +254,7 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = "dd/MM/yyyy"
-        let user = LocalUser(name: "Nguyễn Quốc Tuyến",
+        let user = User(name: "Nguyễn Quốc Tuyến",
                              birthDay: formatter.date(from: "26/06/1997") ?? Date(),
                              phoneNumber: "0968329208",
                              email: "quoctuyen9aht@gmail.com",
@@ -264,10 +264,10 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4.5,
                              team: Team(id: 8),
-                             image: UIImage(named: "avatar"),
+                             imageUrl: "",
                              userType: .admin,
                              status: .notAuthentic)
         
-        self.presenter?.register(user: user)
+        self.presenter?.register(user: user, userImage: UIImage(named: "avatar")!)
     }
 }

@@ -19,11 +19,11 @@ protocol RegisterPresenterProtocol {
     var router: RegisterRouterProtocol? { get set }
     
     //View -> Presenter
-    func register(user: LocalUser)
+    func register(user: User, userImage: UIImage)
 }
 
 protocol RegisterInteractorProtocol {
-    func register(user: LocalUser)
+    func register(user: User, userImage: UIImage)
 }
 
 protocol RegisterRouterProtocol {

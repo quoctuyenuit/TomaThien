@@ -292,7 +292,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     @objc private func loginTapped(_ sender: UIButton) {
         
-        let user = LocalUser(name: "Nguyễn Quốc Tuyến",
+        let user = User(name: "Nguyễn Quốc Tuyến",
                              birthDay: Date(),
                              phoneNumber: "",
                              email: "",
@@ -302,7 +302,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
                              yearOfAdmission: 2015,
                              yearsOfStudy: 4,
                              team: Team(id: 8),
-                             image: UIImage(),
+                             imageUrl: "",
                              userType: .admin,
                              status: .authentic)
         LoginManager.sharedInstance.user = user
