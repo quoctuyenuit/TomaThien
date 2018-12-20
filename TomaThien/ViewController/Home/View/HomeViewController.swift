@@ -29,19 +29,16 @@ class HomeViewController: UIViewController, HomeViewProtocol {
                 HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
                 HomeCellModel(identify: .report, image: UIImage(named: "ico_report"), title: "Báo cáo"),
-                HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server"),
             ]
         case .sublead?:
             items = [
                 HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
-                HomeCellModel(identify: .sendServer, image: UIImage(named: "ico_sendserver"), title: "Gửi lên server")
             ]
         case .member?:
             items = [
                 HomeCellModel(identify: .qrCodeView, image: UIImage(named: "ico_show_qrcode"), title: "Xuất mã QR"),
                 HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
-                HomeCellModel(identify: .checkRegister, image: UIImage(named: "ico_check"), title: "Kiểm tra điểm danh")
             ]
         default: break
         }
@@ -165,9 +162,9 @@ extension HomeViewController: UICollectionViewDataSource {
         case .qrCodeScanner:
             let scannerViewController = QRScannerRouter.createQRScanner()
             self.parentView?.navigationController?.pushViewController(scannerViewController, animated: true)
-        case .qrCodeView:
-            let qrCodeView = QRCodeRouter.createQRCodeViewController()
-            self.parentView?.navigationController?.pushViewController(qrCodeView, animated: true)
+        case .showList:
+            let view = ShowListRouter.createShowListViewController()
+            self.parentView?.navigationController?.pushViewController(view, animated: true)
         default:
             break
         }

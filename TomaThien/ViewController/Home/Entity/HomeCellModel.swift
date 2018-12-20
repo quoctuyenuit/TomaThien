@@ -11,11 +11,9 @@ import UIKit
 
 enum HomeCellIdentify {
     case qrCodeScanner
-    case qrCodeView
     case showList
+    case qrCodeView
     case report
-    case sendServer
-    case checkRegister
 }
 
 struct HomeCellModel {

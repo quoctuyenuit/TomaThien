@@ -13,13 +13,28 @@ import FirebaseStorage
 public enum UserType: Int {
     case member = 1
     case sublead = 2
-    case admin = 3
+    case teamLeader = 3
+    case admin = 4
     
     static var allCases: [UserType] = [
         .member,
         .sublead,
-        .admin
+        .admin,
+        .teamLeader
     ]
+    
+    public var description: String {
+        switch self {
+        case .member:
+            return "Thành viên"
+        case .sublead:
+            return "Phó ban"
+        case .admin:
+            return "Trưởng ban"
+        case .teamLeader:
+            return "Trưởng nhóm"
+        }
+    }
 }
 
 public enum UserStatus: Int {

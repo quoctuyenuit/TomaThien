@@ -96,15 +96,18 @@ extension TabBarViewController {
     }
     
     func configure(user: User) -> [UIViewController] {
-        if let home =  HomeRouter.createHomeViewController() as? HomeViewController {
-            home.parentView = self
-            home.tabBarItem = self.createBarItem(with: .home)
-            
-            let profile = UIViewController()
-            profile.tabBarItem = self.createBarItem(with: .profile)
-            
-            return [home, profile]
+        guard let home =  HomeRouter.createHomeViewController() as? HomeViewController else {
+           return []
         }
-        return []
+        
+        guard let profile = ProfileRouter.createProfileViewController() as? ProfileViewController else {
+            return []
+        }
+        
+        home.parentView = self
+        home.tabBarItem = self.createBarItem(with: .home)
+        profile.parentView = self
+        profile.tabBarItem = self.createBarItem(with: .profile)
+        return [home, profile]
     }
 }

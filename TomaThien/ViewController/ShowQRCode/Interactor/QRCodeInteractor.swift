@@ -12,7 +12,7 @@ class QRCodeInteractor: QRCodeInteractorProtocol {
     func createQRData(from userInfo: User, completion: @escaping (Data) -> ()) {
         let id = userInfo.identify
         let name = userInfo.name
-        let team = userInfo.team
+        let team = userInfo.team.id
         let imageUrl = userInfo.imageUrl
         
         let dictionary: NSDictionary = [
