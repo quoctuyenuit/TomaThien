@@ -38,9 +38,47 @@ class ShowListRouter: ShowListRouterProtocol {
         return view
     }
     
+    func createShowRegistedListViewController() -> UIViewController {
+        let view = ShowListRegistedViewController(for: .registedMember)
+        let presenter = ShowListPresenter()
+        let interactor = ShowListInteractor()
+        let router = ShowListRouter()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        return view
+    }
+    
+    func createShowAllMemberListViewController() -> UIViewController {
+        let view = ShowListAllMemberViewController(for: .allMember)
+        let presenter = ShowListPresenter()
+        let interactor = ShowListInteractor()
+        let router = ShowListRouter()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        return view
+    }
+    
     
     func showUserInformationDetail(from viewController: UIViewController?, for user: User) {
         
+    }
+    
+    func showListRegistedList(from viewController: UIViewController?) {
+        let view = self.createShowRegistedListViewController()
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func showListAllMember(from viewController: UIViewController?) {
+        let view = self.createShowAllMemberListViewController()
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
     
     func showListOfDetail(from viewController: UIViewController?, for typeList: TypeList) {

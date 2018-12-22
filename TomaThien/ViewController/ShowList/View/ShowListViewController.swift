@@ -27,6 +27,13 @@ class ShowListViewController: UIViewController, ShowListViewProtocol {
         self.setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Danh Sách"
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
     private func setupView() {
         self.view.addSubview(self._tableView)
         self._tableView.snp.makeConstraints { (make) in

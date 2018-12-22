@@ -65,6 +65,29 @@ class ServerServices {
         }
     }
     
+    public func pullData(path: ServerReferncePath,
+                         key: String,
+                         limited: UInt = 20,
+                         completion: @escaping ([DataSnapshot]) -> ()) {
+        
+        let childPath = "\(path.rawValue)/\(key)"
+        self.queue.async {
+            self.databaseReference
+                .child(childPath)
+                .queryLimited(toLast: limited)
+                .observe(.value) { (snapshot) in
+                    var listSnapshot = [DataSnapshot]()
+                    for child in snapshot.children {
+                        if let snapshot = child as? DataSnapshot {
+                            listSnapshot.append(snapshot)
+                        }
+                    }
+                    completion(listSnapshot)
+            }
+            
+        }
+    }
+    
     public func pushData(key: String,
                          from parent: ServerReferncePath,
                          value: Any,

@@ -72,16 +72,26 @@ protocol ShowListPresenterProtocol {
     //MARK: - List Of Detail
     func showUserInformationDetail(from viewController: UIViewController, for user: User)
     func getListMemberInformation(for typeList: TypeList, callBack: @escaping (User) -> ())
+    
+    func getListRegistedMember(for date: String, callBack: @escaping (User) -> ())
+    func getListAllMemberByTeam(teamId: Int, callBack: @escaping (User) -> ())
 }
 
 protocol ShowListInteractorProtocol {
     func getListMemberInformation(for typeList: TypeList) -> Observable<User>
-    func getListRegistedMemberInformation() -> Observable<User>
+    func getListRegistedMemberInformation(for date: String) -> Observable<User>
+    func getListAllMemberByTeam(teamId: Int) -> Observable<User>
 }
 
 protocol ShowListRouterProtocol {
     static func createShowListViewController() -> UIViewController
     func createShowListDetailViewController(for typeList: TypeList) -> UIViewController
+    func createShowRegistedListViewController() -> UIViewController
+    func createShowAllMemberListViewController() -> UIViewController
+    
     func showUserInformationDetail(from viewController: UIViewController?, for user: User)
+    
+    func showListRegistedList(from viewController: UIViewController?)
+    func showListAllMember(from viewController: UIViewController?)
     func showListOfDetail(from viewController: UIViewController?, for typeList: TypeList)
 }

@@ -270,7 +270,7 @@ extension QRScannerViewController {
         let date = Date()
         let formatted = DateFormatter()
         formatted.dateStyle = .short
-        formatted.dateFormat = "yyyyMMdd"
+        formatted.dateFormat = "yyyyMM"
         
         dictionary.forEach { (key, value) in
 //            let path = "\(ServerReferncePath.registationList.rawValue)/\(formatted.string(from: date))/\(key)"

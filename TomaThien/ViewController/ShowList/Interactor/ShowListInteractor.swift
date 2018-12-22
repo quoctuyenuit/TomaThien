@@ -12,7 +12,6 @@ import Firebase
 
 class ShowListInteractor: ShowListInteractorProtocol {
     func getListMemberInformation(for typeList: TypeList) -> Observable<User> {
-        
         return Observable.create { (observer) -> Disposable in
             ServerServices.sharedInstance.pullData(path: ServerReferncePath.studentList) { (listSnapshot) in
                 listSnapshot.forEach({ (snapshot) in
@@ -27,25 +26,45 @@ class ShowListInteractor: ShowListInteractorProtocol {
         
     }
     
-    func getListRegistedMemberInformation() -> Observable<User> {
-        
+    func getListRegistedMemberInformation(for date: String) -> Observable<User> {
         return Observable.create { (observer) -> Disposable in
+            ServerServices
+                .sharedInstance
+                .pullData(path: ServerReferncePath.registationList,
+                          key: date,
+                          completion: { (listSnapshot) in
+                            listSnapshot.forEach {
+                                
+                                let identify = self.getIdentify(from: $0)
+                                self.getUserInformation(for: identify, complication: { (user) in
+                                    observer.onNext(user)
+                                })
+                            }
+                })
+            return Disposables.create()
+        }
+        
+    }
+    
+    func getListAllMemberByTeam(teamId: Int) -> Observable<User> {
+        return Observable.create({ (observer) -> Disposable in
             Database.database()
                 .reference()
-                .child(ServerReferncePath.registationList.rawValue)
-                .observe(DataEventType.value) { (dataSnapshot) in
+                .child(ServerReferncePath.studentList.rawValue)
+                .queryOrdered(byChild: "team")
+                .queryStarting(atValue: teamId)
+                .queryEnding(atValue: teamId)
+                .observe(.value) { (dataSnapshot) in
                     for child in dataSnapshot.children {
                         if let snapshot = child as? DataSnapshot {
-                            let identify = self.getIdentify(from: snapshot)
-                            self.getUserInformation(for: identify, complication: { (user) in
+                            if let user = User(snapshot: snapshot) {
                                 observer.onNext(user)
-                            })
+                            }
                         }
                     }
             }
             return Disposables.create()
-        }
-        
+        })
     }
 }
 
@@ -72,9 +91,6 @@ extension ShowListInteractor {
     }
     
     private func getIdentify(from dataSnapshot: DataSnapshot) -> String {
-        guard
-            let value = dataSnapshot.value as? [String: AnyObject],
-            let identify = value.first?.key else { return "" }
-        return identify
+        return dataSnapshot.key
     }
 }

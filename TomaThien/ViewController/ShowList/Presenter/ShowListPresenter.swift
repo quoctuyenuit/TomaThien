@@ -22,25 +22,43 @@ class ShowListPresenter: ShowListPresenterProtocol {
     }
     
     func showListOfDetail(from viewController: UIViewController, for typeList: TypeList) {
-        self.router?.showListOfDetail(from: viewController, for: typeList)
+        
+        switch typeList {
+        case .allMember:
+            self.router?.showListAllMember(from: viewController)
+        case .registedMember:
+            self.router?.showListRegistedList(from: viewController)
+        default:
+            self.router?.showListOfDetail(from: viewController, for: typeList)
+        }
+        
     }
     
     func getListMemberInformation(for typeList: TypeList, callBack: @escaping (User) -> ()) {
         
-        if typeList == TypeList.registedMember {
-            self.interactor?.getListRegistedMemberInformation()
-                .asObservable()
-                .subscribe(onNext: { user in
-                    callBack(user)
-                })
-                .disposed(by: self.disposeBag)
-        } else {
-            self.interactor?.getListMemberInformation(for: typeList)
-                .asObservable()
-                .subscribe(onNext: { user in
-                    callBack(user)
-                })
-                .disposed(by: self.disposeBag)
-        }
+        self.interactor?.getListMemberInformation(for: typeList)
+            .asObservable()
+            .subscribe(onNext: { user in
+                callBack(user)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    func getListRegistedMember(for date: String, callBack: @escaping (User) -> ()) {
+        self.interactor?.getListRegistedMemberInformation(for: date)
+            .asObservable()
+            .subscribe(onNext: { user in
+                callBack(user)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    func getListAllMemberByTeam(teamId: Int, callBack: @escaping (User) -> ()) {
+        self.interactor?.getListAllMemberByTeam(teamId: teamId)
+            .asObservable()
+            .subscribe(onNext: { user in
+                callBack(user)
+            })
+            .disposed(by: self.disposeBag)
     }
 }

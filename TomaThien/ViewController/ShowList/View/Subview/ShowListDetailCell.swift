@@ -67,7 +67,7 @@ class ShowListDetailCell: UITableViewCell {
         self._moreContentView.addSubview( self._descriptionLabel)
         
         self._avatar.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
             make.width.height.equalTo(self.avatarSize)
             make.centerY.equalToSuperview()
             make.top.equalToSuperview().offset(10)
