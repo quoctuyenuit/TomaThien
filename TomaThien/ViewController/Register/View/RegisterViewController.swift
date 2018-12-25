@@ -381,7 +381,8 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     func registerSuccessful(for user: User) {
         let alertController = UIAlertController(title: "Thông báo", message: "Xin chúc mừng bạn, Đăng ký đã thành công!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel) { (_) in
-            UIAppDelegate.shareInstance.showMainViewController(user: user)
+            LoginManager.sharedInstance.user = user
+            UIAppDelegate.shareInstance.showMainViewController()
         }
         
         alertController.addAction(okAction)

@@ -38,7 +38,6 @@ class RegisterInteractor: RegisterInteractorProtocol {
                                                     print(error.localizedDescription)
                                                     return
                                                 }
-                                                LoginManager.sharedInstance.user = user
         }
     }
     

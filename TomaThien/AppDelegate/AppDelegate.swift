@@ -19,14 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
-        
-//        UserDataCache.sharedInstance.select(id: <#T##String#>)
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LoginRouter.createLoginViewController()
         window?.makeKeyAndVisible()
         
+        Database.database().isPersistenceEnabled = true
+        
+        if let alreadyUser = UserDataCache.sharedInstance.selectAll().first {
+            LoginManager.sharedInstance.user = alreadyUser
+            UIAppDelegate.shareInstance.showMainViewController()
+            return true
+        }
+        
+        window?.rootViewController = LoginRouter.createLoginViewController()
         return true
     }
     

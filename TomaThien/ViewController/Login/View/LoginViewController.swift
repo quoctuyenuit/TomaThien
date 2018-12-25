@@ -253,7 +253,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     func loginSuccessful(user: User) {
         LoginManager.sharedInstance.user = user
-        UIAppDelegate.shareInstance.showMainViewController(user: user)
+        UIAppDelegate.shareInstance.showMainViewController()
     }
     
     func loginFault(message: String) {
