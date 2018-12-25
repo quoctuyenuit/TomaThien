@@ -17,7 +17,6 @@ class HomeViewCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
         return imageView
     }()
     

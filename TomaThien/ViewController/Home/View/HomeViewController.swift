@@ -35,19 +35,24 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         switch LoginManager.sharedInstance.user?.userType {
         case .admin?:
             items = [
-                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
-                HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
-                HomeCellModel(identify: .report, image: UIImage(named: "ico_report"), title: "Báo cáo"),
+                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrscanner"), title: "Quét điểm danh"),
+                HomeCellModel(identify: .showList, image: UIImage(named: "ico_list"), title: "Xem danh sách"),
+//                HomeCellModel(identify: .report, image: UIImage(named: "ico_report"), title: "Báo cáo"),
             ]
         case .sublead?:
             items = [
-                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrcode"), title: "Quét điểm danh"),
-                HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
+                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrscanner"), title: "Quét điểm danh"),
+                HomeCellModel(identify: .showList, image: UIImage(named: "ico_list"), title: "Xem danh sách"),
+            ]
+        case .teamLeader?:
+            items = [
+                HomeCellModel(identify: .qrCodeScanner, image: UIImage(named: "ico_qrscanner"), title: "Quét điểm danh"),
+                HomeCellModel(identify: .showList, image: UIImage(named: "ico_list"), title: "Xem danh sách"),
             ]
         case .member?:
             items = [
-                HomeCellModel(identify: .qrCodeView, image: UIImage(named: "ico_show_qrcode"), title: "Xuất mã QR"),
-                HomeCellModel(identify: .showList, image: UIImage(named: "ico_view"), title: "Xem danh sách"),
+                HomeCellModel(identify: .qrCodeView, image: UIImage(named: "ico_qrView"), title: "Xuất mã QR"),
+                HomeCellModel(identify: .showList, image: UIImage(named: "ico_list"), title: "Xem danh sách"),
             ]
         default: break
         }

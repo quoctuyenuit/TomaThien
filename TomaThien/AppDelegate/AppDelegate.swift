@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
         
+//        UserDataCache.sharedInstance.select(id: <#T##String#>)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = LoginRouter.createLoginViewController()
         window?.makeKeyAndVisible()

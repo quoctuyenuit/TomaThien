@@ -85,7 +85,7 @@ extension TabBarViewController: UITabBarControllerDelegate {}
 extension TabBarViewController {
     fileprivate func createBarItem(with type: BarType) -> UITabBarItem {
         let image = UIImage(named: type.iconName)
-        let item = UITabBarItem(title: type.name, image: image, selectedImage: image?.withRenderingMode(.alwaysOriginal))
+        let item = UITabBarItem(title: type.name, image: image, selectedImage: image?.withRenderingMode(.alwaysTemplate))
         
         item.badgeValue = nil
         item.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -2.0)

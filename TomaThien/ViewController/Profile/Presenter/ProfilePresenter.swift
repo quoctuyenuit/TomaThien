@@ -31,7 +31,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
         image.pin_setImage(from: URL(string: user?.imageUrl ?? ""))
         return [
             ProfileCellModel(icon: image.image,type: .header, title: userName, subtitle: userTypeString),
-            ProfileCellModel(icon: UIImage(named: "ico_qrcode"),type: .qrCodeView)
+            ProfileCellModel(icon: UIImage(named: "ico_qrView"),type: .qrCodeView)
         ]
     }
 }

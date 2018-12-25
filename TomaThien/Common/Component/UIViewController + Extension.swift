@@ -37,18 +37,20 @@ extension UIViewController {
             contentView.addSubview(label)
             contentView.addSubview(ai)
             
-            label.snp.makeConstraints { (make) in
+            ai.snp.makeConstraints({ (make) in
                 make.top.equalToSuperview().offset(20)
                 make.width.height.greaterThanOrEqualTo(0)
-                make.centerX.equalToSuperview()
-            }
+                make.centerX.equalToSuperview()  
+            })
             
-            ai.snp.makeConstraints({ (make) in
-                make.top.equalTo(label.snp.bottom).offset(10)
+            label.snp.makeConstraints { (make) in
+                make.top.equalTo(ai.snp.bottom).offset(10)
                 make.width.height.greaterThanOrEqualTo(0)
                 make.centerX.equalToSuperview()
                 make.bottom.equalToSuperview().offset(-10).priority(.medium)
-            })
+            }
+            
+            
             
             contentView.snp.makeConstraints { (make) in
                 make.left.equalToSuperview().offset(30)

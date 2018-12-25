@@ -124,6 +124,31 @@ class UserDataCache: SqliteDatabase {
         return user
     }
     
+//    public func selectAll(id: String) -> User? {
+//        let element = self.userTable.filter(self.identify == id)
+//        var user: User?
+//        
+//        try? self.database.prepare(element).forEach({ (row) in
+//            
+//            let team = TeamDataCache.sharedInstance.select(id: row[self.team]) ?? Team(id: row[self.team])
+//            user = User(name: row[name],
+//                        birthDay: row[birthDay] ,
+//                        phoneNumber: row[phoneNumber],
+//                        email: row[email],
+//                        identify: row[identify] ,
+//                        school: row[school],
+//                        address: row[address],
+//                        yearOfAdmission: row[yearOfAdmission] ,
+//                        yearsOfStudy: Float.init(row[yearsOfStudy] ) ?? 0,
+//                        team: team,
+//                        imageUrl: row[imageUrl],
+//                        userType: UserType(rawValue: row[userType]) ?? .member,
+//                        status: row[status] ? .authentic : .notAuthentic,
+//                        password: row[password])
+//        })
+//        return user
+//    }
+    
     public func count() throws -> Int {
         return try self.database.scalar(self.userTable.count)
     }
