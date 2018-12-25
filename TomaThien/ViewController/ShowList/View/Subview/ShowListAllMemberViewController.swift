@@ -220,7 +220,7 @@ extension ShowListAllMemberViewController: UITableViewDelegate {
 }
 
 extension ShowListAllMemberViewController: TeamListDelegate {
-    func didSelected(userTeam: Team) {
+    func teamListView(didSelect userTeam: Team) {
         self._currentTeam = userTeam
     }
 }

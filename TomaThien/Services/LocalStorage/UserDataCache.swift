@@ -26,6 +26,7 @@ class UserDataCache: SqliteDatabase {
     private let userType = Expression<Int>("userType")
     private let status = Expression<Bool>("status")
     private let imageUrl = Expression<String>("imageUrl")
+    private let password = Expression<String>("password")
     
     public static let sharedInstance = UserDataCache()
     
@@ -53,6 +54,7 @@ class UserDataCache: SqliteDatabase {
                 t.column(imageUrl)
                 t.column(userType)
                 t.column(status)
+                t.column(password)
             })
             print("Create User Table successful")
         } catch (let ex) {
@@ -73,7 +75,8 @@ class UserDataCache: SqliteDatabase {
                                            team <- value.team.id,
                                            imageUrl <- value.imageUrl,
                                            userType <- value.userType.rawValue,
-                                           status <- value.status == .authentic ? true : false)
+                                           status <- value.status == .authentic ? true : false,
+                                           password <- value.password)
         try self.database.run(insert)
         print("insert successful value = \(value)")
     }
@@ -91,7 +94,8 @@ class UserDataCache: SqliteDatabase {
                                              team <- value.team.id,
                                              imageUrl <- value.imageUrl,
                                              userType <- value.userType.rawValue,
-                                             status <- value.status == .authentic ? true : false))
+                                             status <- value.status == .authentic ? true : false,
+                                             password <- value.password))
         print("update user successful")
     }
     
@@ -114,7 +118,8 @@ class UserDataCache: SqliteDatabase {
                              team: team,
                              imageUrl: row[imageUrl],
                              userType: UserType(rawValue: row[userType]) ?? .member,
-                             status: row[status] ? .authentic : .notAuthentic)
+                             status: row[status] ? .authentic : .notAuthentic,
+                             password: row[password])
         })
         return user
     }

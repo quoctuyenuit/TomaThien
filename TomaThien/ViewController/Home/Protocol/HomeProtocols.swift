@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 protocol HomeViewProtocol {
     
@@ -21,10 +22,10 @@ protocol HomePresenterProtocol {
     //View -> Presenter
     func showQRScanner()
     func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol])
-    
+    func getNotification(completion: @escaping (NotificationProtocol) -> ())
 }
 protocol HomeInteractorProtocol {
-    
+    func getNotification() -> Observable<NotificationProtocol>
 }
 protocol HomeRouterProtocol {
     static func mainStoryboard() -> UIStoryboard

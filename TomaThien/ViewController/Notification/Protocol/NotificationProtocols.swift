@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol NotificationProtocol {
+    var notiId: String { get set }
     var notiTitle: NotificationTitle { get set }
     var notiTime: String { get set }
     var notiContent: String { get set }

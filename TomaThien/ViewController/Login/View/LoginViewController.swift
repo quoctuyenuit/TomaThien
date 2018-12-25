@@ -13,7 +13,7 @@ import RxCocoa
 
 class LoginViewController: UIViewController, LoginViewProtocol {
     var presenter: LoginPresenterProtocol?
-    private let textFieldHeight: CGFloat = 40
+    private let textFieldHeight: CGFloat = 50
     //MARK: - View Properties
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -44,21 +44,17 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         label.textColor = .black
         return label
     }()
-    private lazy var userNameTextField: TextField = {
-        let textField = TextField()
-        textField.textField.placeholder = "Nhập email nhé"
-        textField.textField.textColor = .black
-        textField.textField.tintColor = .appBase
-        textField.textField.keyboardType = UIKeyboardType.default
-        textField.textField.keyboardAppearance = .dark
+    private lazy var userNameTextField: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Nhập email nhé"
+        textField.inputType = InputType.emailInput
         return textField
     }()
-    private lazy var passwordTextField: TextField = {
-        let textField = TextField()
-        textField.textField.placeholder = "Nhập mật khẩu nhé"
-        textField.textField.textColor = .black
-        textField.textField.tintColor = .appBase
-        textField.textField.isSecureTextEntry = true
+    private lazy var passwordTextField: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Nhập mật khẩu nhé"
+        textField.inputType = InputType.textInput
+        textField.isSecureTextEntry = true
         return textField
     }()
     private lazy var forgotPasswordButton: UIButton = {
@@ -235,23 +231,6 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     }
     
     private func setupEvent() {
-//        Observable
-//            .combineLatest(self.userNameTextField.rx.text.asObservable(),
-//                                 self.passwordTextField.rx.text.asObservable())
-//            .subscribe(onNext: { (userName, password) in
-//                guard
-//                    let userName = userName,
-//                    let password = password else { return }
-//
-//                if userName.isEmpty || password.isEmpty {
-//                    self.loginButton.isEnabled = false
-//                } else {
-//                    self.loginButton.isEnabled = true
-//                }
-//            })
-//            .disposed(by: self.disposeBag)
-        
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWasShown(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -262,6 +241,31 @@ class LoginViewController: UIViewController, LoginViewProtocol {
                                                object: nil)
     }
     
+    @objc private func registerTapped(_ sender: UIButton) {
+        self.presenter?.showRegisterView(from: self)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let _ = self.userNameTextField.endEditing(true)
+        let _ = self.passwordTextField.endEditing(true)
+    }
+    
+    func loginSuccessful(user: User) {
+        LoginManager.sharedInstance.user = user
+        UIAppDelegate.shareInstance.showMainViewController(user: user)
+    }
+    
+    func loginFault(message: String) {
+        let alert = UIAlertController(title: "Lỗi", message: message, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController {
     @objc private func keyboardWasShown(_ notification: Notification) {
         UIView.animate(withDuration: 0.3) {
             guard
@@ -292,34 +296,40 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     @objc private func loginTapped(_ sender: UIButton) {
         
-        let user = User(name: "Nguyễn Quốc Tuyến",
-                             birthDay: Date(),
-                             phoneNumber: "",
-                             email: "",
-                             identify: "184313135",
-                             school: "",
-                             address: "",
-                             yearOfAdmission: 2015,
-                             yearsOfStudy: 4,
-                             team: Team(id: 8),
-                             imageUrl: "",
-                             userType: .admin,
-                             status: .authentic)
-        LoginManager.sharedInstance.user = user
-        UIAppDelegate.shareInstance.showMainViewController(user: user)
+        let errorAction = { () in
+            let alert = UIAlertController(title: "Lỗi", message: "Bạn chưa nhập hết thông tin?", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        guard let userName = self.userNameTextField.data as? String,
+            let password = self.passwordTextField.data as? String,
+            !userName.isEmpty,
+            !password.isEmpty else {
+                errorAction()
+                return
+        }
+        self.presenter?.login(userName: userName, password: password)
+//        let user = User(name: "Nguyễn Quốc Tuyến",
+//                        birthDay: Date(),
+//                        phoneNumber: "",
+//                        email: "",
+//                        identify: "184313135",
+//                        school: "",
+//                        address: "",
+//                        yearOfAdmission: 2015,
+//                        yearsOfStudy: 4,
+//                        team: Team(id: 8),
+//                        imageUrl: "",
+//                        userType: .admin,
+//                        status: .authentic)
+//        LoginManager.sharedInstance.user = user
+//        UIAppDelegate.shareInstance.showMainViewController(user: user)
     }
-
+    
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
         
-    }
-    
-    @objc private func registerTapped(_ sender: UIButton) {
-        self.presenter?.showRegisterView(from: self)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.userNameTextField.textField.endEditing(true)
-        self.passwordTextField.textField.endEditing(true)
     }
 }

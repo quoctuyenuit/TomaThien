@@ -9,23 +9,31 @@
 import Foundation
 import UIKit
 
-protocol RegisterViewProtocol {
+protocol RegisterViewProtocol: class {
     var presenter: RegisterPresenterProtocol? { get set }
+    func showLoadingView()
+    func hideLoadingView()
+    func registerSuccessful(for user: User)
+    func registerFail()
 }
 
-protocol RegisterPresenterProtocol {
+protocol RegisterPresenterProtocol: class {
     var view: RegisterViewProtocol? { get set }
     var interactor: RegisterInteractorProtocol? { get set }
     var router: RegisterRouterProtocol? { get set }
     
     //View -> Presenter
-    func register(user: User, userImage: UIImage)
+    func register(user: User, userImage: UIImage?)
+    func beginStartRegister()
+    func registerSuccessful(for user: User)
+    func registerFail()
 }
 
-protocol RegisterInteractorProtocol {
-    func register(user: User, userImage: UIImage)
+protocol RegisterInteractorProtocol: class {
+    var presenter: RegisterPresenterProtocol? { get set }
+    func register(user: User, userImage: UIImage?)
 }
 
-protocol RegisterRouterProtocol {
+protocol RegisterRouterProtocol: class {
     static func createRegisterViewController() -> UIViewController
 }

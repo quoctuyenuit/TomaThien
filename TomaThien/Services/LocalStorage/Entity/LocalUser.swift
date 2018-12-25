@@ -56,10 +56,28 @@ public class User {
     var imageUrl: String //Link download
     var userType: UserType
     var status: UserStatus = .notAuthentic
+    var password: String
     
     public var key: String {
         return self.identify.lowercased()
     }
+//
+//    init() {
+//        self.name = "name"
+//        self.birthDay = Date()
+//        self.phoneNumber = "phoneNumber"
+//        self.email = "email"
+//        self.identify = "182646466"
+//        self.school = "school"
+//        self.address = "address"
+//        self.yearOfAdmission = 0
+//        self.yearsOfStudy = 0
+//        self.team = Team(id: 0)
+//        self.imageUrl = ""
+//        self.userType = .member
+//        self.status = .notAuthentic
+//        self.password = "admin"
+//    }
     
     public init(name: String,
                 birthDay: Date,
@@ -73,7 +91,8 @@ public class User {
                 team: Team,
                 imageUrl: String,
                 userType: UserType = .member,
-                status: UserStatus = .notAuthentic) {
+                status: UserStatus = .notAuthentic,
+                password: String) {
         self.name = name
         self.birthDay = birthDay
         self.phoneNumber = phoneNumber
@@ -87,6 +106,7 @@ public class User {
         self.imageUrl = imageUrl
         self.userType = userType
         self.status = status
+        self.password = "admin"
     }
     
     init?(snapshot: DataSnapshot) {
@@ -104,7 +124,8 @@ public class User {
             let teamId = value["team"] as? Int,
             let imageUrl = value["imageUrl"] as? String,
             let userTypeRawValue = value["userType"] as? Int,
-            let userType = UserType(rawValue: userTypeRawValue)
+            let userType = UserType(rawValue: userTypeRawValue),
+            let password = value["password"] as? String
             else {
                 return nil
         }
@@ -125,6 +146,7 @@ public class User {
         self.team = TeamDataCache.sharedInstance.select(id: teamId) ?? Team(id: teamId)
         self.imageUrl = imageUrl
         self.userType = userType
+        self.password = password
     }
     
     func toObject() -> Any {
@@ -144,8 +166,7 @@ public class User {
             "team": self.team.id,
             "imageUrl": self.imageUrl,
             "userType": self.userType.rawValue,
-            "time": dateFormatted.string(from: Date()),
-            "status": self.status == .notAuthentic ? false : true
+            "password": self.password
         ]
     }
 }

@@ -19,7 +19,14 @@ class LoginPresenter: LoginPresenterProtocol {
     var router: LoginRouterProtocol?
     
     func login(userName: String, password: String) {
-        
+        self.interactor?.login(userName: userName, password: password, completion: { (result) in
+            switch result {
+            case .fault(let error):
+                self.view?.loginFault(message: error)
+            case .success(let userInfor):
+                self.view?.loginSuccessful(user: userInfor)
+            }
+        })
     }
     
     func showRegisterView(from viewController: UIViewController) {

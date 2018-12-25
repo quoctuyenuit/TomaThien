@@ -86,6 +86,7 @@
 		3DF1E4AF2187F2D600A4E58E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4AE2187F2D600A4E58E /* ToastView.swift */; };
 		3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */; };
 		430BF72C21C9CFD700DE1936 /* ProfileCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430BF72B21C9CFD700DE1936 /* ProfileCellModel.swift */; };
+		4350D31521CF3D5F00FC8405 /* UIBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350D31421CF3D5F00FC8405 /* UIBaseTextField.swift */; };
 		436448BA21CDE40700AD092C /* ShowListAllMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436448B921CDE40700AD092C /* ShowListAllMemberViewController.swift */; };
 		436B43BD21C8C86C0017FDFB /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B43BC21C8C86C0017FDFB /* ProfileProtocol.swift */; };
 		4374A7B821CA81A20038DB6C /* ShowListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374A7B721CA81A20038DB6C /* ShowListDetailViewController.swift */; };
@@ -94,6 +95,8 @@
 		4374A7C121CA823E0038DB6C /* ShowListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374A7C021CA823E0038DB6C /* ShowListRouter.swift */; };
 		4374A7C321CA852A0038DB6C /* ShowListDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374A7C221CA852A0038DB6C /* ShowListDetailCell.swift */; };
 		4374A7CC21CA9A0E0038DB6C /* ShowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374A7CB21CA9A0E0038DB6C /* ShowListViewController.swift */; };
+		43C3188A21D1304600477E5B /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3188921D1304600477E5B /* UIViewController + Extension.swift */; };
+		43C3188C21D1329000477E5B /* UIBaseToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3188B21D1329000477E5B /* UIBaseToastViewController.swift */; };
 		43DA5CFE21CD2415001F9815 /* MonthYearDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA5CFD21CD2415001F9815 /* MonthYearDateTimePicker.swift */; };
 		43DA5D0221CD24ED001F9815 /* BaseUISearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA5D0121CD24ED001F9815 /* BaseUISearchView.swift */; };
 		43DA5D0421CD304A001F9815 /* ShowListRegistedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA5D0321CD304A001F9815 /* ShowListRegistedViewController.swift */; };
@@ -213,6 +216,7 @@
 		3DF1E4BC2188092C00A4E58E /* ShowListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListProtocols.swift; sourceTree = "<group>"; };
 		4081062385FB05E02D3ABB99 /* Pods-TomaThienTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomaThienTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomaThienTests/Pods-TomaThienTests.release.xcconfig"; sourceTree = "<group>"; };
 		430BF72B21C9CFD700DE1936 /* ProfileCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellModel.swift; sourceTree = "<group>"; };
+		4350D31421CF3D5F00FC8405 /* UIBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseTextField.swift; sourceTree = "<group>"; };
 		436448B921CDE40700AD092C /* ShowListAllMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListAllMemberViewController.swift; sourceTree = "<group>"; };
 		436B43BC21C8C86C0017FDFB /* ProfileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
 		4374A7B721CA81A20038DB6C /* ShowListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListDetailViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 		4374A7C021CA823E0038DB6C /* ShowListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListRouter.swift; sourceTree = "<group>"; };
 		4374A7C221CA852A0038DB6C /* ShowListDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListDetailCell.swift; sourceTree = "<group>"; };
 		4374A7CB21CA9A0E0038DB6C /* ShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListViewController.swift; sourceTree = "<group>"; };
+		43C3188921D1304600477E5B /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		43C3188B21D1329000477E5B /* UIBaseToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseToastViewController.swift; sourceTree = "<group>"; };
 		43DA5CFD21CD2415001F9815 /* MonthYearDateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearDateTimePicker.swift; sourceTree = "<group>"; };
 		43DA5D0121CD24ED001F9815 /* BaseUISearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUISearchView.swift; sourceTree = "<group>"; };
 		43DA5D0321CD304A001F9815 /* ShowListRegistedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListRegistedViewController.swift; sourceTree = "<group>"; };
@@ -568,6 +574,9 @@
 				3DEB9A232197304900F25524 /* UIButtonWithBadge.swift */,
 				43DA5CFD21CD2415001F9815 /* MonthYearDateTimePicker.swift */,
 				43DA5D0121CD24ED001F9815 /* BaseUISearchView.swift */,
+				4350D31421CF3D5F00FC8405 /* UIBaseTextField.swift */,
+				43C3188921D1304600477E5B /* UIViewController + Extension.swift */,
+				43C3188B21D1329000477E5B /* UIBaseToastViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1331,6 +1340,7 @@
 				3D272EBD218D4B71001C6BFA /* MainViewController.swift in Sources */,
 				3D5471C32189A59000A9CFF3 /* LoginViewController.swift in Sources */,
 				4374A7B821CA81A20038DB6C /* ShowListDetailViewController.swift in Sources */,
+				43C3188C21D1329000477E5B /* UIBaseToastViewController.swift in Sources */,
 				3DACC63A2197FDCA0052673B /* NotificationPresenter.swift in Sources */,
 				430BF72C21C9CFD700DE1936 /* ProfileCellModel.swift in Sources */,
 				3D5CFA1121952979009C4116 /* ShowQRCodeProtocols.swift in Sources */,
@@ -1358,6 +1368,7 @@
 				3D903F7621876803008C02CF /* Extension.swift in Sources */,
 				3D953FCD218612CC00976811 /* QRScannerResultPopupView.swift in Sources */,
 				3DF1E4BD2188092C00A4E58E /* ShowListProtocols.swift in Sources */,
+				4350D31521CF3D5F00FC8405 /* UIBaseTextField.swift in Sources */,
 				436448BA21CDE40700AD092C /* ShowListAllMemberViewController.swift in Sources */,
 				3D903F7421875DF2008C02CF /* FileHelper.swift in Sources */,
 				3D953F6B2185E74E00976811 /* QRScannerPresenter.swift in Sources */,
@@ -1378,6 +1389,7 @@
 				43E1D5FC21C94DC20043921E /* ProfileHeaderViewCell.swift in Sources */,
 				3D5471E82189E6DE00A9CFF3 /* UserDataCache.swift in Sources */,
 				3D272ECB218D5121001C6BFA /* UIAppDelegate+Extension.swift in Sources */,
+				43C3188A21D1304600477E5B /* UIViewController + Extension.swift in Sources */,
 				3D5CFA1721952C10009C4116 /* QRCodePresenter.swift in Sources */,
 				3D953FC72186063D00976811 /* UIColor+Extension.swift in Sources */,
 				3D5471EF2189F06000A9CFF3 /* RegisterProtocols.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol TeamListDelegate {
-    func didSelected(userTeam: Team)
+    func teamListView(didSelect userTeam: Team)
 }
 class TeamListViewController: UIViewController {
     //MARK: - Constant properties
@@ -55,6 +55,11 @@ class TeamListViewController: UIViewController {
         super.viewDidLoad()
         self.setupView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.delegate?.teamListView(didSelect: selectedItem!)
+    }
 }
 
 extension TeamListViewController: UITableViewDelegate {
@@ -62,7 +67,8 @@ extension TeamListViewController: UITableViewDelegate {
         self.tableView.visibleCells.forEach { $0.accessoryType = .none }
         let selectedCell = self.tableView.cellForRow(at: indexPath)
         selectedCell?.accessoryType = .checkmark
-        self.delegate?.didSelected(userTeam: self.listItems[indexPath.row])
+        self.delegate?.teamListView(didSelect: self.listItems[indexPath.row])
+        self.selectedItem = self.listItems[indexPath.row]
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         self.navigationController?.popViewController(animated: true)

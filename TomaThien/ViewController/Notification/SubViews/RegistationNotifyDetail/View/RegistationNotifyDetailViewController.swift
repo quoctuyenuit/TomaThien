@@ -242,7 +242,7 @@ extension RegistationNotifyDetailViewController: UserTypeListDelegate {
 }
 
 extension RegistationNotifyDetailViewController: TeamListDelegate {
-    func didSelected(userTeam: Team) {
+    func teamListView(didSelect userTeam: Team) {
         self.user?.team = userTeam
         self.updateView(user: user!)
         self.tableView.reloadData()

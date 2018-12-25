@@ -11,15 +11,17 @@ import UIKit
 
 class RegisterRouter: RegisterRouterProtocol {
     static func createRegisterViewController() -> UIViewController {
-        let view = RegisterViewController()
-        let presenter = RegisterPresenter()
-        let interactor = RegisterInteractor()
-        let router = RegisterRouter()
+        let view: RegisterViewProtocol & UIViewController = RegisterViewController()
+        let presenter: RegisterPresenterProtocol = RegisterPresenter()
+        let interactor: RegisterInteractorProtocol = RegisterInteractor()
+        let router: RegisterRouterProtocol = RegisterRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
+        
+        interactor.presenter = presenter
         
         return view
     }

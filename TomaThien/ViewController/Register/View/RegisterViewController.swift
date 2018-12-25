@@ -13,10 +13,13 @@ import UIKit
 class RegisterViewController: UIViewController, RegisterViewProtocol {
     var presenter: RegisterPresenterProtocol?
     
+    private var avatarImage: UIImage?
+    
+    
     private let textFieldPlacing: CGFloat = 5
     private let logoWidth: CGFloat = 60
     private let padding: CGFloat = 20
-    private let textFieldHeight: CGFloat = 40
+    private let textFieldHeight: CGFloat = 50
     private lazy var mainBound: UIView = {
         let bound = UIView()
         bound.backgroundColor = .white
@@ -26,16 +29,12 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         bound.layer.shadowOpacity = 0.5
         bound.layer.shadowOffset = .zero
         bound.layer.shadowRadius = 1
-        bound.addSubview(self.headerBound)
-        bound.addSubview(self.scrollView)
-        bound.addSubview(self.registerButton)
+        
         return bound
     }()
     private lazy var headerBound: UIView = {
         let bound = UIView()
-        bound.addSubview(self.logoImageView)
-        bound.addSubview(self.largeTitle)
-        bound.addSubview(self.smallTitle)
+        
         return bound
     }()
     
@@ -65,57 +64,109 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     //MARK: - Properties body
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.addSubview(self.bodyBound)
+        scroll.showsVerticalScrollIndicator = false
+        scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
     
-    private lazy var name: TextField = {
-        return self.getTextField(placeHolder: "Nhập họ tên nhé")
+    private let avatarSize: CGFloat = 65
+    
+    private lazy var avatar: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = avatarSize / 2
+        imageView.backgroundColor = .white
+        imageView.clearsContextBeforeDrawing = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.masksToBounds = false
+        imageView.layer.borderColor = UIColor.whiteTwo.cgColor
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "default_avatar")
+        imageView.addGestureRecognizer(self.imageTapGesture)
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }()
     
-    private lazy var phoneNumber: TextField = {
-        return self.getTextField(placeHolder: "Nhập số điện thoại nhé")
+    private lazy var imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTappedGesture(_:)))
+    
+    private lazy var name: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Họ tên"
+        return textField
     }()
     
-    private lazy var email: TextField = {
-        return self.getTextField(placeHolder: "Nhập email nhé")
+    private lazy var phoneNumber: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Số điện thoại"
+        textField.inputType = InputType.numberInput
+        return textField
     }()
     
-    private lazy var identify: TextField = {
-        return self.getTextField(placeHolder: "Nhập số cmnd nhé")
+    private lazy var email: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Email"
+        textField.inputType = InputType.emailInput
+        return textField
     }()
     
-    private lazy var school: TextField = {
-        return self.getTextField(placeHolder: "Nhập trường bạn học nhé")
+    private lazy var birthDay: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Ngày sinh"
+        textField.inputType = InputType.dateInput
+        return textField
     }()
     
-    private lazy var address: TextField = {
-        return self.getTextField(placeHolder: "Nhập địa chỉ nè")
+    private lazy var identify: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "CMND"
+        textField.inputType = InputType.numberInput
+        return textField
     }()
     
-    private lazy var yearOfAdmission: TextField = {
-        return self.getTextField(placeHolder: "Nhập năm bạn nhập học nha")
+    private lazy var password: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Mật khẩu đăng nhập"
+        textField.inputType = InputType.textInput
+        textField.isSecureTextEntry = true
+        return textField
     }()
     
-    private lazy var yearsOfStudy: TextField = {
-        return self.getTextField(placeHolder: "Nhập số năm bạn học nha")
+    private lazy var school: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Sinh viên trường"
+        textField.inputType = InputType.textInput
+        return textField
     }()
     
-    private lazy var team: TextField = {
-        return self.getTextField(placeHolder: "Nhóm")
+    private lazy var address: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Địa chỉ"
+        textField.inputType = InputType.textInput
+        return textField
+    }()
+    
+    private lazy var yearOfAdmission: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Năm nhập học"
+        textField.inputType = InputType.numberInput
+        return textField
+    }()
+    
+    private lazy var yearsOfStudy: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Thời gian học (năm)"
+        textField.inputType = InputType.decimalInput
+        return textField
+    }()
+    
+    private lazy var team: UIBaseTextField = {
+        let textField = UIBaseTextField()
+        textField.placeholder = "Thuộc nhóm"
+        textField.inputType = InputType.teamInput
+        return textField
     }()
     
     private lazy var bodyBound: UIView = {
         let bound = UIView()
-        bound.addSubview(self.name)
-        bound.addSubview(self.phoneNumber)
-        bound.addSubview(self.email)
-        bound.addSubview(self.identify)
-        bound.addSubview(self.school)
-        bound.addSubview(self.address)
-        bound.addSubview(self.yearOfAdmission)
-        bound.addSubview(self.yearsOfStudy)
-        bound.addSubview(self.team)
         return bound
     }()
     
@@ -127,6 +178,11 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         btn.titleLabel?.font = UIFont.sfuiMedium()
         btn.backgroundColor = UIColor.appBase
         btn.addTarget(self, action: #selector(registerTapped(_:)), for: .touchUpInside)
+        btn.layer.shadowColor = UIColor.lightGray.cgColor
+        btn.layer.shadowOffset = CGSize(width: 0, height: -3)
+        btn.layer.shadowRadius = 1
+        btn.layer.shadowOpacity = 0.3
+        btn.layer.masksToBounds = false
         return btn
     }()
     
@@ -147,25 +203,38 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
             make.centerX.equalToSuperview()
         }
         self.largeTitle.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
             make.top.equalTo(self.logoImageView.snp.bottom).offset(40)
+            make.left.right.equalToSuperview()
             make.height.greaterThanOrEqualTo(0)
         }
         self.smallTitle.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
             make.top.equalTo(self.largeTitle.snp.bottom).offset(30)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().priority(.medium)
         }
     }
     
     private func setupBody() {
+        self.headerBound.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.height.greaterThanOrEqualTo(0)
+        }
+        
+        self.avatar.snp.makeConstraints { (make) in
+            make.top.equalTo(self.headerBound.snp.bottom).offset(30)
+            make.left.equalToSuperview()
+            make.width.height.equalTo(avatarSize)
+        }
         self.name.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
+            make.left.equalTo(self.avatar.snp.right).offset(10)
+            make.right.equalToSuperview()
+            make.centerY.equalTo(self.avatar.snp.centerY)
             make.height.equalTo(self.textFieldHeight)
         }
         self.phoneNumber.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalTo(self.name.snp.bottom).offset(self.textFieldPlacing)
+            make.top.equalTo(self.avatar.snp.bottom).offset(self.textFieldPlacing)
             make.height.equalTo(self.textFieldHeight)
         }
         self.email.snp.makeConstraints { (make) in
@@ -173,14 +242,24 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
             make.top.equalTo(self.phoneNumber.snp.bottom).offset(self.textFieldPlacing)
             make.height.equalTo(self.textFieldHeight)
         }
-        self.identify.snp.makeConstraints { (make) in
+        self.birthDay.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.email.snp.bottom).offset(self.textFieldPlacing)
             make.height.equalTo(self.textFieldHeight)
         }
-        self.school.snp.makeConstraints { (make) in
+        self.identify.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.birthDay.snp.bottom).offset(self.textFieldPlacing)
+            make.height.equalTo(self.textFieldHeight)
+        }
+        self.password.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.identify.snp.bottom).offset(self.textFieldPlacing)
+            make.height.equalTo(self.textFieldHeight)
+        }
+        self.school.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.password.snp.bottom).offset(self.textFieldPlacing)
             make.height.equalTo(self.textFieldHeight)
         }
         self.address.snp.makeConstraints { (make) in
@@ -207,19 +286,38 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     }
     
     private func setupView() {
-        self.view.backgroundColor = UIColor.background
         self.view.addSubview(self.mainBound)
+        
+        mainBound.addSubview(self.scrollView)
+        mainBound.addSubview(self.registerButton)
+        
+        scrollView.addSubview(self.bodyBound)
+
+        bodyBound.addSubview(self.headerBound)
+        bodyBound.addSubview(self.avatar)
+        bodyBound.addSubview(self.name)
+        bodyBound.addSubview(self.phoneNumber)
+        bodyBound.addSubview(self.email)
+        bodyBound.addSubview(self.birthDay)
+        bodyBound.addSubview(self.identify)
+        bodyBound.addSubview(self.password)
+        bodyBound.addSubview(self.school)
+        bodyBound.addSubview(self.address)
+        bodyBound.addSubview(self.yearOfAdmission)
+        bodyBound.addSubview(self.yearsOfStudy)
+        bodyBound.addSubview(self.team)
+        
+        headerBound.addSubview(self.logoImageView)
+        headerBound.addSubview(self.largeTitle)
+        headerBound.addSubview(self.smallTitle)
+        
+        self.view.backgroundColor = UIColor.background
+        
         self.setupTitle()
         self.setupBody()
         
-        self.headerBound.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.height.greaterThanOrEqualTo(0)
-        }
-        
         self.bodyBound.snp.makeConstraints { (make) in
-            make.left.top.right.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
             make.width.equalToSuperview()
         }
         
@@ -231,7 +329,7 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         }
         
         self.scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headerBound.snp.bottom).offset(20)
+            make.top.equalToSuperview().offset(self.padding)
             make.left.equalToSuperview().offset(self.padding)
             make.right.equalToSuperview().offset(-self.padding)
             make.bottom.equalTo(self.registerButton.snp.top).offset(-20)
@@ -240,34 +338,172 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         self.mainBound.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(30)
-            make.bottom.equalToSuperview().offset(-20)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+    }
+    
+    private func setupEvents() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWasShown(_:)),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        self.setupEvents()
     }
     
-    @objc private func registerTapped(_ sender: UIButton) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.dateFormat = "dd/MM/yyyy"
-        let user = User(name: "Nguyễn Quốc Tuyến",
-                             birthDay: formatter.date(from: "26/06/1997") ?? Date(),
-                             phoneNumber: "0968329208",
-                             email: "quoctuyen9aht@gmail.com",
-                             identify: "184313135",
-                             school: "ĐH Công Nghệ Thông Tin - ĐHQG TP.HCM",
-                             address: "KTX Khu B - ĐHQG TP.HCM",
-                             yearOfAdmission: 2015,
-                             yearsOfStudy: 4.5,
-                             team: Team(id: 8),
-                             imageUrl: "",
-                             userType: .admin,
-                             status: .notAuthentic)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let activeTextField = UIResponder.currentFirst() as? UITextField else { return }
+        activeTextField.endEditing(true)
+    }
+    
+    private var _loadingView: UIView?
+    
+    func showLoadingView() {
+        self._loadingView = UIViewController.displaySpinner(onView: self.view)
+    }
+    
+    func hideLoadingView() {
+        guard let loadingView = self._loadingView else { return }
+        UIViewController.removeSpinner(spinner: loadingView)
+    }
+    
+    func registerSuccessful(for user: User) {
+        let alertController = UIAlertController(title: "Thông báo", message: "Xin chúc mừng bạn, Đăng ký đã thành công!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel) { (_) in
+            UIAppDelegate.shareInstance.showMainViewController(user: user)
+        }
         
-        self.presenter?.register(user: user, userImage: UIImage(named: "avatar")!)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func registerFail() {
+        let alertController = UIAlertController(title: "Thông báo", message: "Xin lỗi, đăng ký thất bại!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel) { (_) in
+            
+        }
+        
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+//MARK: - objc functionality
+extension RegisterViewController {
+    @objc private func registerTapped(_ sender: UIButton) {
+        
+        let errorAction = { () in
+            let alert = UIAlertController(title: "Lỗi", message: "Bạn chưa nhập hết thông tin?", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "Ừ", style: UIAlertAction.Style.cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        
+        guard let name = name.data as? String,
+            let birthDay = birthDay.data as? Date,
+            let phoneNumber = phoneNumber.data as? Int,
+            let email = email.data as? String,
+            let identify = identify.data as? Int,
+            let school = school.data as? String,
+            let address = address.data as? String,
+            let yearOfAdmission = yearOfAdmission.data as? Int,
+            let yearsOfStudy = yearsOfStudy.data as? Decimal,
+            let team = team.data as? Team,
+            let password = password.data as? String else {
+                errorAction()
+                return
+        }
+        
+        
+        let user = User(name: name,
+                        birthDay: birthDay,
+                        phoneNumber: "\(phoneNumber)",
+                        email: email,
+                        identify: "\(identify)",
+                        school: school,
+                        address: address,
+                        yearOfAdmission: yearOfAdmission,
+                        yearsOfStudy: Float(truncating: yearsOfStudy as NSNumber),
+                        team: team,
+                        imageUrl: "",
+                        userType: UserType.member,
+                        status: .notAuthentic,
+                        password: password)
+        
+        
+        self.presenter?.register(user: user, userImage: self.avatarImage)
+    }
+    
+    @objc private func keyboardWasShown(_ notification: Notification) {
+        guard let info = notification.userInfo,
+            let keyboardFrameValue =
+            info["UIKeyboardBoundsUserInfoKey"] as? NSValue
+            else { return }
+        
+        let keyboardFrame = keyboardFrameValue.cgRectValue
+        let keyboardSize = keyboardFrame.size
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc private func imageTappedGesture(_ sender: UITapGestureRecognizer) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let alertController = UIAlertController(title: "Choose Image Source", message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
+                imagePicker.sourceType = .camera
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            })
+            alertController.addAction(cameraAction)
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photoLibraryAction = UIAlertAction(title: "photo library", style: .default, handler: { action in
+                imagePicker.sourceType = .photoLibrary
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            })
+            alertController.addAction(photoLibraryAction)
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.avatar.image = selectedImage
+            self.avatarImage = selectedImage
+            dismiss(animated: true, completion: nil)
+        }
     }
 }

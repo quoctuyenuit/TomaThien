@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class HomePresenter: HomePresenterProtocol {
     var view: HomeViewProtocol?
     var interactor: HomeInteractorProtocol?
     var router: HomeRouterProtocol?
+    private let _disposeBag = DisposeBag()
     
     func showQRScanner() {
         self.router?.showQRScanner()
@@ -20,5 +22,14 @@ class HomePresenter: HomePresenterProtocol {
     
     func showNotification(from viewController: UIViewController?, listNotification: [NotificationProtocol]) {
         self.router?.showNotification(from: viewController, listNotification: listNotification)
+    }
+    
+    func getNotification(completion: @escaping (NotificationProtocol) -> ()) {
+        self.interactor?.getNotification()
+            .asObservable()
+            .subscribe(onNext: {
+                completion($0)
+            })
+            .disposed(by: self._disposeBag)
     }
 }

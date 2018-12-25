@@ -46,12 +46,10 @@ class ServerServices {
     
     public func pullData(path: ServerReferncePath,
                          type: DataEventType = .value,
-                         limited: UInt = 20,
                          completion: @escaping ([DataSnapshot]) -> ()) {
         self.queue.async {
             self.databaseReference
                 .child(path.rawValue)
-                .queryLimited(toLast: limited)
                 .observe(type) { (snapshot) in
                 var listSnapshot = [DataSnapshot]()
                 for child in snapshot.children {

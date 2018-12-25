@@ -14,7 +14,21 @@ class RegisterPresenter: RegisterPresenterProtocol {
     var interactor: RegisterInteractorProtocol?
     var router: RegisterRouterProtocol?
     
-    func register(user: User, userImage: UIImage) {
+    func register(user: User, userImage: UIImage?) {
         self.interactor?.register(user: user, userImage: userImage)
+    }
+    
+    func beginStartRegister() {
+        self.view?.showLoadingView()
+    }
+    
+    func registerSuccessful(for user: User) {
+        self.view?.hideLoadingView()
+        self.view?.registerSuccessful(for: user)
+    }
+    
+    func registerFail() {
+        self.view?.hideLoadingView()
+        self.view?.registerFail()
     }
 }

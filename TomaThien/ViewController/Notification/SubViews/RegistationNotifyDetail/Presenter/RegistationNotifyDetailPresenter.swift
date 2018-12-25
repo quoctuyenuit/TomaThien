@@ -25,4 +25,6 @@ class RegistationNotifyDetailPresenter: RegistationNotifyDetailPresenterProtocol
     func showTeamList(from viewController: UIViewController, currentTeam: Team) {
         self.router?.showTeamList(from: viewController, currentTeam: currentTeam)
     }
+    
+    
 }

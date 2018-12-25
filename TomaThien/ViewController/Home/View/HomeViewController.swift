@@ -9,14 +9,23 @@
 import UIKit
 import UICollectionViewLeftAlignedLayout
 import RxSwift
+import Firebase
 
 private let reuseIdentifier = "Cell"
 
 class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: HomePresenterProtocol?
     var parentView: UIViewController?
-    var notificationCaches = [NotificationProtocol]()
-    var numberOfNotification = 0
+    var notificationCaches = [NotificationProtocol]() {
+        didSet {
+            self.notifyButton.setBadge(value: self.notificationCaches.count)
+        }
+    }
+//    var numberOfNotification = 0 {
+//        didSet {
+//            self.notifyButton.setBadge(value: self.numberOfNotification)
+//        }
+//    }
     private let disposeBag = DisposeBag()
     //MARK: - Constant variable
     private let headerHeight: CGFloat = 44
@@ -95,8 +104,13 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         super.viewDidLoad()
         self.setupView()
         self.collectionView.indicatorStyle = .white
-        self.getNotification()
         self.navigationItem.title = "Trang chủ"
+        
+        self.notificationCaches.removeAll()
+        
+        self.presenter?.getNotification(completion: { (notify) in
+            self.notificationCaches.append(notify)
+        })
     }
     
     private func setupView() {
@@ -142,7 +156,24 @@ class HomeViewController: UIViewController, HomeViewProtocol {
 }
 
 
-extension HomeViewController: UICollectionViewDelegate {}
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.items[indexPath.row]
+        switch item.identify {
+        case .qrCodeScanner:
+            let scannerViewController = QRScannerRouter.createQRScanner()
+            self.parentView?.navigationController?.pushViewController(scannerViewController, animated: true)
+        case .showList:
+            let view = ShowListRouter.createShowListViewController()
+            self.parentView?.navigationController?.pushViewController(view, animated: true)
+        case .qrCodeView:
+            let qrView = QRCodeRouter.createQRCodeViewController()
+            self.parentView?.navigationController?.pushViewController(qrView, animated: true)
+        case .report:
+            break
+        }
+    }
+}
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -155,41 +186,10 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.configure(with: model)
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = self.items[indexPath.row]
-        switch item.identify {
-        case .qrCodeScanner:
-            let scannerViewController = QRScannerRouter.createQRScanner()
-            self.parentView?.navigationController?.pushViewController(scannerViewController, animated: true)
-        case .showList:
-            let view = ShowListRouter.createShowListViewController()
-            self.parentView?.navigationController?.pushViewController(view, animated: true)
-        default:
-            break
-        }
-    }
-}
-
-extension HomeViewController {
-    private func getNotification() {
-        ServerServices
-            .sharedInstance
-            .pullData(path: ServerReferncePath.notificationRegister,
-                      completion: { (listSnapshot) in
-                        listSnapshot.forEach({ (snapshot) in
-                            if let user = NotificationRegistation(snapshot: snapshot) {
-                                self.notificationCaches.append(user)
-                                self.numberOfNotification += 1
-                                self.notifyButton.setBadge(value: self.numberOfNotification)
-                            }
-                        })
-            })
-    }
 }
 
 extension HomeViewController {
     @objc private func notifyButtonTapped(_ sender: UIButton) {
-        self.presenter?.showNotification(from: self.parentView, listNotification: notificationCaches)
+        self.presenter?.showNotification(from: self.parentView, listNotification: self.notificationCaches)
     }
 }

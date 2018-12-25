@@ -9,8 +9,15 @@
 import Foundation
 import UIKit
 
+enum LoginResult {
+    case fault(error: String)
+    case success(userInfor: User)
+}
+
 protocol LoginViewProtocol {
     var presenter: LoginPresenterProtocol? { get set }
+    func loginSuccessful(user: User)
+    func loginFault(message: String)
 }
 
 protocol LoginPresenterProtocol {
@@ -21,11 +28,10 @@ protocol LoginPresenterProtocol {
     //MARK: View -> Presenter
     func login(userName: String, password: String)
     func showRegisterView(from viewController: UIViewController)
-    //MARK: Presenter -> Interactor
 }
 
 protocol LoginInteractorProtocol {
-    
+    func login(userName: String, password: String, completion: @escaping (LoginResult) -> ())
 }
 
 protocol LoginRouterProtocol {
